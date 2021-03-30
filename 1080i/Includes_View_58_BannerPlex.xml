@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<includes>
+
+    <include name="View_58_BannerPlex">
+        <control type="group">
+            <left>-50</left>
+            <bottom>-50</bottom>
+            <top>0</top>
+            <visible>Control.IsVisible(58)</visible>
+            <include content="View_BannerPlex_Layout">
+                <param name="visible" value="Container.Content(TVShows)" />
+            </include>
+            <include>View_BannerPlex_Info</include>
+            <include content="Object_Scrollbar_Banner">
+                <param name="visible" value="Control.IsVisible(58)" />
+            </include>
+        </control>
+    </include>
+
+    <include name="Object_Scrollbar_Banner">
+        <control type="scrollbar" id="60">
+            <onback>50</onback>
+            <right>-20</right>
+            <width>8</width>
+            <height>400</height>
+            <bottom>0</bottom>
+            <visible>$PARAM[visible]</visible>
+            <showonepage>false</showonepage>
+            <orientation>vertical</orientation>
+            <onleft>50</onleft>
+            <texturesliderbackground colordiffuse="main_fg_12" border="4">common/white.png</texturesliderbackground>
+            <texturesliderbar colordiffuse="main_fg_30" border="4">scrollbar/scrollv.png</texturesliderbar>
+            <texturesliderbarfocus colordiffuse="$VAR[ColorHighlight]" border="4">scrollbar/scrollv.png</texturesliderbarfocus>
+            <animation effect="fade" start="100" end="33" time="400" condition="!Control.HasFocus(60) + !Container.Scrolling">Conditional</animation>
+            <include>Animation_FadeIn</include>
+            <include>Animation_FadeOut</include>
+        </control>
+    </include>
+
+    <include name="View_BannerPlex_Layout">
+        <param name="width" default="620" />
+        <param name="height" default="132" />
+        <param name="banner_width" default="141" />
+        <param name="banner_height" default="190" />
+        <param name="poster_left" default="6.3" />
+        <param name="poster_top" default="21" />
+        <param name="viewtype" default="BannerPlex" />
+        <definition>
+            <control type="panel" id="58">
+                <left>0</left>
+                <bottom>0</bottom>
+                <width>1920</width>
+                <height>400</height>
+                <orientation>vertical</orientation>
+                <pagecontrol>60</pagecontrol>
+                <scrolltime tween="cubic">300</scrolltime>
+                <focusposition>2</focusposition>
+                <preloaditems>2</preloaditems>
+                <include>View_Vertical_Movement</include>
+                <visible>$PARAM[visible]</visible>
+                <viewtype label="$PARAM[viewtype]">icon</viewtype>
+                <itemlayout width="$PARAM[width]" height="$PARAM[height]">
+                    <control type="group">
+                        <control type="image">
+                            <include content="Defs_Pad">
+                                <param name="pad" value="-5" />
+                            </include>
+                            <bordersize>20</bordersize>
+                            <bordertexture border="30" colordiffuse="Shadow">common/shadow-20.png</bordertexture>
+                            <texture border="30" colordiffuse="AltPosterBack">common/box.png</texture>
+                        </control>
+                        <control type="image">
+                            <bordersize>15</bordersize>
+                            <aspectratio aligny="center" scalediffuse="false">scale</aspectratio>
+                            <texture background="true" diffuse="diffuse/banner.png">$VAR[Image_Banner]</texture>
+                        </control>
+                        <control type="image">
+                            <bordersize>15</bordersize>
+                            <aspectratio aligny="bottom" align="right" scalediffuse="false">keep</aspectratio>
+                            <texture background="true" diffuse="diffuse/banner.png">$VAR[Image_ClearLogo]</texture>
+                            <visible>String.IsEmpty(ListItem.Art(tvshow.banner)) + String.IsEmpty(ListItem.Art(banner))</visible>
+                        </control>
+                        <include>View_WatchedOverlay</include>
+                    </control>
+                </itemlayout>
+                <focusedlayout width="$PARAM[width]" height="$PARAM[height]">
+                    <control type="group">
+                        <include>Animation_FocusBounce_Small</include>
+                        <control type="group">
+                            <control type="group">
+                                <control type="image">
+                                    <include content="Defs_Pad">
+                                        <param name="pad" value="-5" />
+                                    </include>
+                                    <bordersize>20</bordersize>
+                                    <bordertexture border="30" colordiffuse="Shadow">common/shadow-20.png</bordertexture>
+                                    <texture border="30" colordiffuse="AltPosterBack">common/box.png</texture>
+                                </control>
+                                <control type="image">
+                                    <bordersize>15</bordersize>
+                                    <aspectratio aligny="center" scalediffuse="false">scale</aspectratio>
+                                    <texture background="true" diffuse="diffuse/banner-widget.png">$VAR[Image_Banner]</texture>
+                                </control>
+                                <control type="image">
+                                    <bordersize>15</bordersize>
+                                    <aspectratio aligny="bottom" align="right" scalediffuse="false">keep</aspectratio>
+                                    <texture background="true" diffuse="diffuse/banner-widget.png">$VAR[Image_ClearLogo]</texture>
+                                    <visible>String.IsEmpty(ListItem.Art(tvshow.banner)) + String.IsEmpty(ListItem.Art(banner))</visible>
+                                </control>
+                                <include>View_WatchedOverlay</include>
+                            </control>
+                            <!-- Highlight -->
+                            <control type="group">
+                                <include>View_Selectbox</include>
+                            </control>
+                        </control>
+                    </control>
+                </focusedlayout>
+            </control>
+        </definition>
+    </include>
+
+    <include name="View_BannerPlex_Info">
+        <control type="group">
+            <top>-50</top>
+            <width>1080</width>
+            <control type="group">
+                <width>800</width>
+                <height>450</height>
+                <left>1050</left>
+                <top>-60</top>
+                <control type="group">
+                    <include>Object_PosterBack</include>
+                    <control type="group">
+                        <include>Defs_Pad</include>
+                        <include content="Object_Artwork">
+                            <param name="id" value="57" />
+                            <param name="selectbox" value="false" />
+                            <param name="icon" value="$VAR[Image_Landscape]" />
+                            <param name="diffuse" value="diffuse/landscape-big.png" />
+                            <param name="aspectratio" value="stretch" />
+                        </include>
+                    </control>
+                </control>
+            </control>
+            <control type="group">
+                <top>-20</top>
+                <left>0</left>
+                <control type="grouplist">
+                    <left>0</left>
+                    <top>0</top>
+                    <control type="button">
+                        <label>$VAR[InfoPanel_Label1]</label>
+                        <include>ShowCase_InfoPanel_Buttons_Values</include>
+                    </control>
+                    <control type="button">
+                        <label>$VAR[InfoPanel_Label2]</label>
+                        <include>ShowCase_InfoPanel_Buttons_Values</include>
+                    </control>
+                </control>
+                <control type="grouplist">
+                    <left>503</left>
+                    <top>0</top>
+                    <control type="button">
+                        <label>$VAR[InfoPanel_Label3]</label>
+                        <include>ShowCase_InfoPanel_Buttons_Values</include>
+                    </control>
+                    <control type="group">
+                        <control type="button">
+                            <label>$VAR[InfoPanel_Label4]</label>
+                            <width>251</width>
+                            <include>ShowCase_InfoPanel_Buttons_Values</include>
+                        </control>
+                        <control type="button">
+                            <label>$VAR[InfoPanel_Label5]</label>
+                            <left>251</left>
+                            <width>250</width>
+                            <include>ShowCase_InfoPanel_Buttons_Values</include>
+                        </control>
+                    </control>
+                </control>
+                <control type="textbox">
+                    <label>$VAR[Label_Plot]</label>
+                    <top>180</top>
+                    <left>0</left>
+                    <width>970</width>
+                    <height>250</height>
+                    <font>font_plotbox</font>
+                    <pagecontrol>62</pagecontrol>
+                    <autoscroll time="3000" delay="4000" repeat="5000">Skin.HasSetting(Enable.AutoScroll) + !Control.HasFocus(62)</autoscroll>
+                    <include>ShowCase_InfoPanel_Buttons_Values</include>
+                </control>
+            </control>
+            <control type="group">
+                <height>70</height>
+                <include content="Object_Info_Ratings" condition="!Skin.HasSetting(DisableAllRatings)">
+                    <param name="container" value="Container(58)." />
+                </include>
+            </control>
+        </control>
+    </include>
+
+    <include name="ShowCase_InfoPanel_Buttons_Values">
+        <height>85</height>
+        <width>501</width>
+        <textoffsetx>15</textoffsetx>
+        <aligny>top</aligny>
+        <align>left</align>
+        <font>font_small</font>
+        <textcolor>main_fg_70</textcolor>
+        <focusedcolor>main_fg_70</focusedcolor>
+    </include>
+
+    <variable name="InfoPanel_Label1">
+        <value condition="[Container.Content(tvshows) | Container.Content(seasons)] + !String.IsEmpty(Window(Home).Property(NextAired.Status))">[COLOR $VAR[ColorHighlight]]$LOCALIZE[126]:[/COLOR][CR]$INFO[Window(Home).Property(NextAired.Status)]</value>
+        <value condition="[Container.Content(tvshows) | Container.Content(seasons)]">[COLOR $VAR[ColorHighlight]]$LOCALIZE[515]:[/COLOR][CR]$INFO[ListItem.Genre]</value>
+    </variable>
+    <variable name="InfoPanel_Label2">
+        <value condition="[Container.Content(tvshows) | Container.Content(seasons)] + !String.IsEmpty(Window(Home).Property(NextAired.NextDate))">[COLOR $VAR[ColorHighlight]]Next episode:[/COLOR][CR]$INFO[Window(Home).Property(NextAired.NextDate),,: ]$INFO[Window(Home).Property(NextAired.NextTitle)]</value>
+        <value condition="[Container.Content(tvshows) | Container.Content(seasons)] + !String.IsEmpty(Window(Home).Property(NextAired.LatestDate))">[COLOR $VAR[ColorHighlight]]Latest episode:[/COLOR][CR]$INFO[Window(Home).Property(NextAired.LatestNumber),, - ]$INFO[Window(Home).Property(NextAired.LatestTitle)]</value>
+        <value condition="[Container.Content(tvshows) | Container.Content(seasons)]">[COLOR $VAR[ColorHighlight]]Network:[/COLOR][CR]$INFO[ListItem.Studio]</value>
+    </variable>
+    <variable name="InfoPanel_Label3">
+        <value condition="Container.Content(tvshows) + !String.IsEmpty(Window(Home).Property(NextAired.Status))">[COLOR $VAR[ColorHighlight]]$INFO[ListItem.Property(TotalSeasons)]$VAR[OneOrMoreSeasons, , / ]$INFO[ListItem.Property(TotalEpisodes),, ]$VAR[OneOrMoreEpisodes]:[/COLOR][CR]$INFO[ListItem.Property(UnWatchedEpisodes),, $LOCALIZE[16101]]</value>
+        <value condition="Container.Content(tvshows)">[COLOR $VAR[ColorHighlight]]$LOCALIZE[20360]:[/COLOR][CR]$INFO[ListItem.Property(TotalEpisodes)]$INFO[ListItem.Property(UnWatchedEpisodes), (,[LOWERCASE] $LOCALIZE[16101][/LOWERCASE])]</value>
+        <value condition="Container.Content(seasons)">[COLOR $VAR[ColorHighlight]]$LOCALIZE[20360]:[/COLOR][CR]$INFO[ListItem.Property(TotalEpisodes)]</value>
+    </variable>
+    <variable name="InfoPanel_Label4">
+        <value condition="Container.Content(tvshows)">[COLOR $VAR[ColorHighlight]]$LOCALIZE[33054]:[/COLOR][CR]$INFO[ListItem.Property(TotalSeasons)]</value>
+    </variable>
+    <variable name="InfoPanel_Label5">
+        <value condition="Container.Content(tvshows) | Container.Content(episodes) | Container.Content(seasons)">[COLOR $VAR[ColorHighlight]]$LOCALIZE[20416]:[/COLOR][CR]$INFO[ListItem.Premiered]</value>
+    </variable>
+
+    <variable name="OneOrMoreSeasons">
+        <value condition="String.IsEqual(ListItem.Property(TotalSeasons),1)">$LOCALIZE[20373]</value>
+        <value>$LOCALIZE[33054]</value>
+    </variable>
+    <variable name="OneOrMoreEpisodes">
+        <value condition="String.IsEqual(Container.ListItem.Property(TotalEpisodes),1) | String.IsEqual(ListItem.Property(TotalEpisodes),1)">$LOCALIZE[20359]</value>
+        <value>$LOCALIZE[20360]</value>
+    </variable>
+
+</includes>
+

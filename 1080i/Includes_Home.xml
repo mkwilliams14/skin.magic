@@ -1,0 +1,471 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<includes>
+
+    <include name="Home_Menu">
+        <include>Global_Background</include>
+        <control type="group">
+            <control type="group">
+                <visible>!$EXP[Exp_InfoVisible]</visible>
+                <include>Animation_Right</include>
+                <control type="group">
+                    <include>Animation_FadeInOut_Common</include>
+                    <include>View_Pad</include>
+                    <control type="group">
+                        <top>-20</top>
+                        <right>-100</right>
+                        <left>-100</left>
+                        <bottom>-15</bottom>
+                        <control type="group" id="3000">
+                            <control type="group">
+                                <include>Animation_Home_Slide</include>
+                                <include>skinshortcuts-template-widgets</include>
+                            </control>
+                            <control type="group">
+                                <visible>String.IsEqual(Container(3700).ListItemAbsolute(0).Property(list),Weather) + Weather.IsFetched</visible>
+                                <include content="Animation_UpDown">
+                                    <param name="visible" value="String.IsEqual(Container(3700).ListItemAbsolute(0).Property(list),Weather) + Weather.IsFetched" />
+                                </include>
+                                <include content="Weather">
+                                    <left>100</left>
+                                    <right>100</right>
+                                    <top>20</top>
+                                    <bottom>20</bottom>
+                                </include>
+                            </control>
+                            <control type="group">
+                                <visible>Integer.IsEqual(Container(3700).NumItems,0)</visible>
+                                <left>20</left>
+                                <right>20</right>
+                                <top>-180</top>
+                                <bottom>-65</bottom>
+                                <animation effect="fade" start="0" end="100" time="200" condition="Integer.IsEqual(Container(3700).NumItems,0)">Conditional</animation>
+                                <include>Home_Hub_Showcase</include>
+                            </control>
+                            <!-- Weather and Settings Widgets -->
+                            <include>Home_Widgets_Fullscreen</include>
+                        </control>
+                    </control>
+
+                </control>
+                <include>skinshortcuts-template-homefader</include>
+            </control>
+            <control type="group" id="300">
+                <width>280</width>
+                <left>-200</left>
+                <top>200</top>
+                <include>Animation_Left</include>
+                <include>Animation_Home_Slide</include>
+                <control type="panel" id="301">
+                    <include>Defs_InfoDialog_Visible</include>
+                    <animation effect="fade" start="100" end="0" time="200" condition="ControlGroup(3000).HasFocus() | Control.HasFocus(5000) | Control.HasFocus(5100) | Control.HasFocus(6000)">Conditional</animation>
+                    <top>0</top>
+                    <onright condition="!String.IsEqual(Container(9989).ListItem.Property(list),Settings) + !String.IsEqual(Container(9989).ListItem.Property(list),Weather)">3000</onright>
+                    <onright condition="String.IsEqual(Container(9989).ListItem.Property(list),Settings)">5000</onright>
+                    <onright condition="String.IsEqual(Container(9989).ListItem.Property(list),Weather)">6000</onright>
+                    <width>280</width>
+                    <orientation>vertical</orientation>                
+                    <itemlayout width="280" height="item_list_height">
+                        <control type="label">
+                            <right>40</right>
+                            <font>font_topbar_small</font>
+                            <align>right</align>
+                            <aligny>center</aligny>
+                            <textcolor>main_fg_30</textcolor>
+                            <label>$INFO[ListItem.Label]</label>
+                        </control>
+                    </itemlayout>
+                    <focusedlayout width="280" height="item_list_height">
+                        <control type="label">
+                            <right>40</right>
+                            <font>font_topbar</font>
+                            <align>right</align>
+                            <aligny>center</aligny>
+                            <textcolor>main_fg_100</textcolor>
+                            <label>$INFO[ListItem.Label]</label>
+                        </control>
+                    </focusedlayout>
+                    <content><include>skinshortcuts-mainmenu</include></content>
+                </control>
+            </control>
+        </control>
+        <include>Topbar</include>
+    </include>
+
+    <include name="Home_Widgets_Fullscreen">
+
+        <!-- Weather -->
+        <control type="group">
+            <include>Animation_Home_Slide</include>
+            <visible>String.IsEqual(Container(3700).ListItemAbsolute(0).Property(list),Weather) + Weather.IsFetched</visible>
+            <include content="Animation_UpDown">
+                <param name="visible" value="String.IsEqual(Container(3700).ListItemAbsolute(0).Property(list),Weather) + Weather.IsFetched" />
+            </include>
+            <include content="Weather">
+                <left>100</left>
+                <right>100</right>
+                <top>20</top>
+                <bottom>20</bottom>
+            </include>
+        </control>
+
+        <!-- Settings -->
+        <control type="group">
+            <include>Animation_Home_Slide</include>
+            <top>-180</top>
+            <bottom>-65</bottom>
+            <left>20</left>
+            <right>20</right>
+            <visible>String.IsEqual(Container(3700).ListItemAbsolute(0).Property(list),Settings)</visible>
+            <include content="Animation_UpDown">
+                <param name="visible" value="String.IsEqual(Container(3700).ListItemAbsolute(0).Property(list),Settings)" />
+            </include>
+            <control type="group" id="5200">
+                <include>View_Pad</include>
+                <include>View_Settings</include>
+            </control>
+        </control>
+    </include>
+
+    <include name="Home_Hub_Showcase">
+        <control type="group">
+            <control type="group">
+                <visible>$EXP[Exp_GlobalBackground] | !String.IsEmpty(Window(Home).Property(HasTrailer)) | ![Control.HasFocus(5610) | Control.HasFocus(60)]</visible>
+                <include>Animation_FadeInOut</include>
+                <include>skinshortcuts-template-showcase-background</include>
+                <control type="image">
+                    <bottom>480</bottom>
+                    <texture background="true" colordiffuse="cdffffff">common/vignette-home.png</texture>
+                    <include>Animation_FadeInOut_Common</include>
+                </control>
+                <control type="image">
+                    <bottom>0</bottom>
+                    <height>480</height>
+                    <texture colordiffuse="cdffffff">common/vignette-home-bottom.png</texture>
+                    <include>Animation_FadeInOut_Common</include>
+                </control>
+            </control>
+            <control type="group">
+                <visible>$EXP[Exp_CommonAnimation] | [Control.HasFocus(5610) | Control.HasFocus(60)]</visible>
+                <visible>$EXP[Exp_GlobalBackground] | !String.IsEmpty(Window(Home).Property(HasTrailer))</visible>
+                <include>Animation_FadeInOut</include>
+                <include>Global_Background_Artwork</include>
+            </control>
+
+            <control type="group">
+
+                <animation effect="slide" start="0" end="0,320" condition="Integer.IsEqual(Container(302).NumItems,0)">Conditional</animation>
+                <animation effect="slide" start="0" end="0,570" condition="!Integer.IsEqual(Container(302).NumItems,0)">Conditional</animation>
+                <animation effect="slide" tween="quadratic" time="400" start="0" end="0,-250" condition="Control.HasFocus(302) | [[Control.HasFocus(5610) | Control.HasFocus(60)] + !Integer.IsEqual(Container(302).NumItems,0)]">Conditional</animation>
+                <animation effect="slide" tween="quadratic" time="400" start="0" end="0,-320" condition="Control.HasFocus(5610) | Control.HasFocus(60)">Conditional</animation>
+                <visible allowhiddenfocus="true">!$EXP[Exp_CommonAnimation]</visible>
+                <include>Animation_Common</include>
+                <include>Animation_FadeInOut_Common</include>
+                <control type="group">
+                    <control type="grouplist">
+                        <animation effect="slide" time="0" start="0" end="0,250" condition="Integer.IsEqual(Container(302).NumItems,0)">Conditional</animation>
+                        <visible allowhiddenfocus="true">![Control.HasFocus(5610) | Control.HasFocus(60)]</visible>
+                        <animation type="Hidden">
+                            <effect type="fade" start="100" end="0" delay="0" time="300" tween="cubic" easing="inout" />
+                        </animation>
+                        <animation type="Visible">
+                            <effect type="fade" start="0" end="100" delay="200" time="400" tween="cubic" easing="inout" />
+                        </animation>
+                        <left>view_pad</left>
+                        <top>0</top>
+                        <bottom>730</bottom>
+                        <width>1100</width>
+                        <align>bottom</align>
+                        <orientation>vertical</orientation>
+                        <usecontrolcoords>true</usecontrolcoords>
+                        <itemgap>0</itemgap>
+                        <include content="Object_Info_Title">
+                            <param name="label" value="$VAR[Label_Info_Title_C3001]" />
+                        </include>
+                        <include content="Object_Info_Line">
+                            <param name="label" value="$VAR[Label_56560_InfoLine]" />
+                            <param name="image" value="$VAR[Image_56560_VideoQuality]" />
+                        </include>
+                        <include content="Object_Info_Plot">
+                            <param name="label" value="$VAR[Label_Plot_C3001]" />
+                            <height max="80">auto</height>
+                            <top>10</top>
+                        </include>
+                        <control type="group">
+                            <height>20</height>
+                        </control>
+                        <control type="grouplist">
+                            <left>-20</left>
+                            <right>-26</right>
+                            <align>left</align>
+                            <height>110</height>
+                            <onleft condition="!Window.IsVisible(Home) | Skin.HasSetting(EnableHorizontalHome)">Control.Move(3001,-1)</onleft>
+                            <onleft condition="!Window.IsVisible(Home) | Skin.HasSetting(EnableHorizontalHome)">3101</onleft>
+                            <onleft condition="Window.IsVisible(Home) + !Skin.HasSetting(EnableHorizontalHome)">301</onleft>
+                            <onright>Control.Move(3001,1)</onright>
+                            <onright>3102</onright>
+                            <onback condition="!Window.IsVisible(Home)">302</onback>
+                            <onback condition="Window.IsVisible(Home)">301</onback>
+                            <orientation>horizontal</orientation>
+                            <usecontrolcoords>true</usecontrolcoords>
+                            <itemgap>-10</itemgap>
+                            <include content="Object_Info_Button" description="Play">
+                                <param name="id" value="3101" />
+                                <param name="groupid" value="3201" />
+                                <param name="label" value="$VAR[Label_Showcase_PlayBrowse]" />
+                                <param name="icon" value="$VAR[Image_Showcase_PlayBrowse_Icon]" />
+                                <param name="visible" value="true" />
+                                <ondown>302</ondown>
+                                <onup condition="!Skin.HasSetting(EnableHorizontalHome) | !Window.IsVisible(home)">Control.Move(3001,-1)</onup>
+                                <onup condition="Skin.HasSetting(EnableHorizontalHome) + Window.IsVisible(home)">SetFocus(301)</onup>
+                                <onfocus>SetProperty(WidgetFocus,1)</onfocus>
+                                <onclick>SetFocus(3001)</onclick>
+                                <onclick>Action(Select)</onclick>
+                                <onfocus>SetProperty(TMDbHelper.WidgetContainer,3001,Home)</onfocus>
+                            </include>
+                            <include content="Object_Info_Button" description="Info">
+                                <param name="id" value="3102" />
+                                <param name="groupid" value="3202" />
+                                <param name="label" value="$LOCALIZE[31078]" />
+                                <param name="icon" value="special://skin/extras/icons/info2.png" />
+                                <param name="visible" value="true" />
+                                <ondown>302</ondown>
+                                <onup condition="!Skin.HasSetting(EnableHorizontalHome) | !Window.IsVisible(home)">Control.Move(3001,-1)</onup>
+                                <onup condition="Skin.HasSetting(EnableHorizontalHome) + Window.IsVisible(home)">SetFocus(301)</onup>
+                                <onfocus>SetProperty(WidgetFocus,1)</onfocus>
+                                <onclick>SetFocus(3001)</onclick>
+                                <onclick>Action(Info)</onclick>
+                                <onfocus>SetProperty(TMDbHelper.WidgetContainer,3001,Home)</onfocus>
+                            </include>
+                        </control>
+                    </control>
+                    <control type="grouplist">
+                        <visible>[Control.HasFocus(5610) | Control.HasFocus(60)]</visible>
+                        <animation type="Visible">
+                            <effect type="fade" start="0" end="100" delay="300" time="400" tween="cubic" easing="inout" />
+                        </animation>
+                        <animation type="Hidden">
+                            <effect type="fade" start="100" end="0" delay="0" time="300" tween="cubic" easing="inout" />
+                        </animation>
+
+                        <left>view_pad</left>
+                        <top>65</top>
+                        <bottom>480</bottom>
+                        <width>1100</width>
+                        <align>bottom</align>
+                        <orientation>vertical</orientation>
+                        <usecontrolcoords>true</usecontrolcoords>
+                        <itemgap>0</itemgap>
+                        <include content="Object_Info_Title">
+                            <param name="label" value="$INFO[Container(5610).ListItem.Title]" />
+                        </include>
+                        <include content="Object_Info_Line">
+                            <param name="label" value="$VAR[Label_56560_InfoLine]" />
+                            <param name="image" value="$VAR[Image_56560_VideoQuality]" />
+                        </include>
+                        <include content="Object_Info_Ratings" condition="!Skin.HasSetting(DisableAllRatings)">
+                            <param name="userrating" value="Container(5610).ListItem.UserRating" />
+                            <param name="starrating" value="Container(5610).ListItem.Rating" />
+                        </include>
+                        <include content="Object_Info_Plot">
+                            <param name="height" value="160" />
+                            <param name="label" value="$INFO[Container(5610).ListItem.Plot]" />
+                        </include>
+                        <control type="group">
+                            <height>55</height>
+                        </control>
+                    </control>
+                </control>
+                <control type="group">
+                    <include>View_Pad</include>
+                    <control type="image">
+                        <right>-15</right>
+                        <bottom>385</bottom>
+                        <height>350</height>
+                        <width>590</width>
+                        <texture background="true">$VAR[Image_ClearArt]</texture>
+                        <aspectratio align="right" aligny="bottom" scalediffuse="false">keep</aspectratio>
+                        <bordersize>15</bordersize>
+                        <animation reversible="false" effect="fade" start="100" end="0" delay="0" time="300" tween="cubic" easing="inout">Hidden</animation>
+                        <animation reversible="false" effect="fade" start="0" end="100" delay="200" time="400" tween="cubic" easing="inout">Visible</animation>
+                        <visible>[Control.HAsFocus(5610) | Control.HasFocus(60)]</visible>
+                    </control>
+                    <include content="Viewtype_BackPanel">
+                        <include>Animation_FadeInOut</include>
+                        <visible>[Control.HAsFocus(5610) | Control.HasFocus(60)]</visible>
+                        <height>480</height>
+                    </include>
+                    <control type="group">
+                        <left>-15</left>
+                        <bottom>285</bottom>
+                        <height>120</height>
+                        <animation effect="fade" start="0" end="100" time="300">VisibleChange</animation>
+                        <visible>Container(5610).IsUpdating</visible>
+                        <visible>Integer.IsEqual(Container(5610).NumAllItems,0)</visible>
+                        <include content="Defs_BusySpinner">
+                            <param name="label" value="$LOCALIZE[31428]..." />
+                            <param name="textcolor" value="main_fg_70" />
+                        </include>
+                    </control>
+                    <control type="group">
+                        <bottom>250</bottom>
+                        <top>-250</top>
+                        <visible allowhiddenfocus="true">![Control.HasFocus(5610) | Control.HasFocus(60)]</visible>
+                        <animation effect="fade" start="100" end="0" delay="0" time="400" tween="cubic" easing="inout">Hidden</animation>
+                        <animation effect="fade" start="0" end="100" delay="200" time="400" tween="cubic" easing="inout">Visible</animation>
+                        <animation effect="fade" start="100" end="0" time="300" reversible="false" condition="Container(302).IsUpdating">Conditional</animation>
+                        <animation effect="fade" start="0" end="100" delay="300" time="300" reversible="false" condition="!Container(302).IsUpdating">Conditional</animation>
+                        <include content="Viewtype_Keywords">
+                            <param name="id" value="302" />
+                            <param name="control-type" value="fixedlist" />
+                            <param name="movement" value="5" />
+                            <bottom>view_bottom</bottom>
+                            <left>-80</left>
+                            <right>-80</right>
+                            <onup>3101</onup>
+                            <onback condition="Window.IsVisible(Home)">3101</onback>
+                            <onfocus>SetProperty(TMDbHelper.WidgetContainer,3001,Home)</onfocus>
+                            <ondown>SetProperty(TMDbHelper.WidgetContainer,5610,Home)</ondown>
+                            <ondown>5610</ondown>
+                            <include>Items_SubMenu</include>
+                        </include>
+                        <include content="Home_Hub_Widget_Label">
+                            <param name="id" value="302" />
+                            <param name="label" value="Submenu" />
+                        </include>
+                    </control>
+                    <control type="group">
+                        <animation effect="fade" start="100" end="0" time="300" reversible="false" condition="Container(5610).IsUpdating + Integer.IsEqual(Container(5610).NumAllItems,0)">Conditional</animation>
+                        <animation effect="fade" start="0" end="100" delay="300" time="300" reversible="false" condition="!Container(5610).IsUpdating | !Integer.IsEqual(Container(5610).NumAllItems,0)">Conditional</animation>
+                        <include content="Home_Hub_Widget_Label">
+                            <param name="id" value="5610" />
+                            <param name="label" value="$VAR[Label_Hub_WidgetName]" />
+                        </include>
+                        <include>skinshortcuts-template-spotlight-submenu</include>
+                        <include>skinshortcuts-template-spotlight-mainmenu</include>
+                    </control>
+                </control>
+            </control>
+        </control>
+    </include>
+
+    <include name="Home_Widget_Fullscreen_Info">
+        <control type="group">
+            <visible>!Integer.IsEqual(Container($PARAM[id]).NumItems,0)</visible>
+            <control type="image">
+                <texture background="true" colordiffuse="cdffffff">common/vignette-home.png</texture>
+            </control>
+            <control type="grouplist">
+                <left>view_pad</left>
+                <top>65</top>
+                <bottom>view_pad</bottom>
+                <width>1100</width>
+                <align>bottom</align>
+                <orientation>vertical</orientation>
+                <usecontrolcoords>true</usecontrolcoords>
+                <itemgap>0</itemgap>
+                <include content="Object_Info_Title">
+                    <param name="label" value="$INFO[Container($PARAM[id]).ListItem.Title]" />
+                </include>
+                <include content="Object_Info_Line">
+                    <param name="label" value="$VAR[Label_Home_InfoLine]" />
+                    <param name="image" value="$VAR[Image_Home_VideoQuality]" />
+                </include>
+                <include content="Object_Info_Ratings" condition="!Skin.HasSetting(DisableAllRatings)">
+                    <param name="container" value="Container($PARAM[id])." />
+                </include>
+                <include content="Object_Info_Plot" condition="!Skin.HasSetting(DisableAllRatings)">
+                    <param name="maxheight" value="80" />
+                    <param name="height" value="auto" />
+                    <param name="label" value="$INFO[Container($PARAM[id]).ListItem.Plot]" />
+                </include>
+                <include content="Object_Info_Plot" condition="Skin.HasSetting(DisableAllRatings)">
+                    <param name="maxheight" value="80" />
+                    <param name="height" value="auto" />
+                    <param name="label" value="$INFO[Container($PARAM[id]).ListItem.Plot]" />
+                    <top>10</top>
+                </include>
+            </control>
+            <control type="image">
+                <right>view_pad</right>
+                <bottom>view_pad</bottom>
+                <aspectratio align="right" aligny="bottom">keep</aspectratio>
+                <height>80</height>
+                <fadetime>200</fadetime>
+                <animation effect="slide" end="-160" time="400" tween="quadratic" condition="Control.HasFocus(301) | Control.HasFocus(303) | [Control.HasFocus(3992) + String.IsEmpty(Window.Property(WidgetFocus))] | Skin.HasSetting(LockMainMenu)">Conditional</animation>
+                <texture background="true">$VAR[Image_Home_ClearLogo]</texture>
+            </control>
+        </control>
+    </include>
+
+    <include name="Home_Hub_Widget_Label">
+        <param name="label" default="$VAR[Label_WidgetName]" />
+        <definition>
+            <control type="group">
+                <nested />
+                <left>-15</left>
+                <top>358</top>
+                <include content="View_Cast_Toplabel">
+                    <param name="groupid" value="$PARAM[groupid]" />
+                    <param name="id" value="$PARAM[id]" />
+                    <param name="label" value="$PARAM[label]" />
+                    <param name="altlabel" value="$PARAM[altlabel]" />
+                    <param name="showtitle" value="$PARAM[showtitle]" />
+                    <param name="altid" value="$PARAM[altid]" />
+                    <param name="showonupdate" value="$PARAM[showonupdate]" />
+                </include>
+            </control>
+        </definition>
+    </include>
+
+    <include name="Home_Vertical_Info">
+        <param name="plotheight" default="160" />
+        <definition>
+            <control type="group" id="$PARAM[groupid]">
+                <nested />
+                <control type="grouplist">
+                    <top>5</top>
+                    <left>100</left>
+                    <bottom>60</bottom>
+                    <include condition="Skin.HasSetting(LockMainMenu)">Viewtype_Info_Right_FixedHome</include>
+                    <include condition="!Skin.HasSetting(LockMainMenu)">Viewtype_Info_Right</include>
+                    <orientation>vertical</orientation>
+                    <usecontrolcoords>true</usecontrolcoords>
+                    <itemgap>0</itemgap>
+                    <include content="Object_Info_Title">
+                        <param name="label" value="$INFO[Container($PARAM[id]).ListItem.TvShowTitle]" />
+                        <visible>!String.IsEmpty(Container($PARAM[id]).ListItem.TvShowTitle)</visible>
+                    </include>
+                    <include content="Object_Info_Title">
+                        <param name="label" value="$INFO[Container($PARAM[id]).ListItem.Title]" />
+                        <visible>String.IsEmpty(Container($PARAM[id]).ListItem.TvShowTitle) + !String.IsEmpty(Container($PARAM[id]).ListItem.Title)</visible>
+                    </include>
+                    <include content="Object_Info_Title">
+                        <param name="label" value="$INFO[Container($PARAM[id]).ListItem.Label]" />
+                        <visible>String.IsEmpty(Container($PARAM[id]).ListItem.TvShowTitle) + String.IsEmpty(Container($PARAM[id]).ListItem.Title)</visible>
+                    </include>
+                    <include content="Object_Info_Line">
+                        <param name="label" value="$VAR[Label_Home_InfoLine]" />
+                        <param name="image" value="$VAR[Image_Home_VideoQuality]" />
+                    </include>
+                    <include content="Object_Info_Ratings">
+                        <param name="container" value="Container($PARAM[id])." />
+                        <visible>String.IsEqual(Container($PARAM[id]).ListItem.DBType,movie) | String.IsEqual(Container($PARAM[id]).ListItem.DBType,episode) | String.IsEqual(Container($PARAM[id]).ListItem.DBType,tvshow) | String.IsEqual(Container($PARAM[id]).ListItem.DBType,season) | String.IsEqual(Container($PARAM[id]).ListItem.DBType,set)</visible>
+                    </include>
+                    <include content="Object_Info_Title">
+                        <param name="font" value="font_small_bold" />
+                        <param name="titleheight" value="10" />
+                        <param name="label" value="$INFO[Container($PARAM[id]).ListItem.Title]" />
+                        <top>30</top>
+                        <visible>String.IsEqual(Container($PARAM[id]).ListItem.DBType,episode)</visible>
+                    </include>
+                    <include content="Object_Info_Plot">
+                        <param name="maxheight" value="$PARAM[plotheight]" />
+                        <param name="height" value="auto" />
+                        <param name="label" value="$INFO[Container($PARAM[id]).ListItem.Plot]$INFO[Container($PARAM[id]).ListItem.Property(Album_Description)]$INFO[Container($PARAM[id]).ListItem.Property(Artist_Description)]$INFO[Container($PARAM[id]).ListItem.AddonDescription]" />
+                    </include>
+                </control>
+            </control>
+        </definition>
+    </include>
+</includes>
+

@@ -1,0 +1,467 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<includes>
+
+    <include name="View_Group">
+        <param name="infohide" default="true" />
+        <param name="animation" default="Animation_Common" />
+        <param name="bottom" default="view_bottom" />
+        <definition>
+            <include content="View_Pad">
+                <param name="bottom" value="5" />
+                <param name="top" value="20" />
+                <param name="left" value="20" />
+                <param name="right" value="20" />
+            </include>
+            <include>$PARAM[animation]</include>
+            <include condition="$PARAM[infohide]">Defs_InfoDialog_Visible</include>
+        </definition>
+    </include>
+
+    <include name="View_57_panel">
+        <control type="group">
+            <visible>Control.IsVisible(57)</visible>
+            <include>Object_Codecs_Items</include>
+            <include content="View_Group">
+                <param name="animation" value="Animation_Common" />
+            </include>
+            <include content="View_Panel_Layout">
+                <param name="visible" value="Container.Content(movies) | Container.Content(sets)" />
+                <include>View_Vertical_Movement</include>
+            </include>
+            <include>View_Panel_Info</include>
+        </control>
+    </include>
+
+    <include name="View_Panel_Layout">
+        <param name="itemwidth" default="190" />
+        <param name="itemheight" default="241" />
+        <param name="poster_width" default="141" />
+        <param name="poster_height" default="190" />
+        <param name="poster_left" default="6.3" />
+        <param name="poster_top" default="21" />
+        <param name="case_width" default="162" />
+        <param name="case_height" default="220" />
+        <param name="viewtype" default="Panel" />
+        <definition>
+            <control type="panel" id="57">
+                <nested />
+                <scrolltime tween="quadratic">400</scrolltime>
+                <focusposition>3</focusposition>
+                <movement>3</movement>
+                <bottom>-80</bottom>
+                <right>-80</right>
+                <orientation>vertical</orientation>
+                <pagecontrol>60</pagecontrol>
+                <width>950</width>
+                <height>960</height>
+                <align>right</align>
+                <aligny>top</aligny>
+                <visible>$PARAM[visible]</visible>
+                <onright condition="Control.IsVisible(60)">60</onright>
+                <onright condition="!Control.IsVisible(60)">300</onright>
+                <onleft>300</onleft>
+                <viewtype label="$PARAM[viewtype]">icon</viewtype>
+                <itemlayout width="$PARAM[itemwidth]" height="$PARAM[itemheight]">
+                    <control type="group">
+                        <control type="image">
+                            <left>$PARAM[poster_left]</left>
+                            <top>$PARAM[poster_top]</top>
+                            <width>$PARAM[poster_width]</width>
+                            <height>$PARAM[poster_height]</height>
+                            <aspectratio>stretch</aspectratio>
+                            <texture diffuse="boxes/clearcases/wall_mask.png" fallback="common/blank.png" background="true">$VAR[Image_Poster]</texture>
+                        </control>
+                        <control type="image">
+                            <left>0</left>
+                            <top>0</top>
+                            <width>$PARAM[case_width]</width>
+                            <height>$PARAM[case_height]</height>
+                            <aspectratio>stretch</aspectratio>
+                            <texture background="true">boxes/clearcases/$VAR[Image_Cases]</texture>
+                        </control>
+                    </control>
+                </itemlayout>
+                <focusedlayout width="$PARAM[itemwidth]" height="$PARAM[itemheight]">
+                    <control type="group">
+                        <include>Animation_FocusBounce_Viewlayout</include>
+                        <control type="image">
+                            <left>$PARAM[poster_left]</left>
+                            <top>$PARAM[poster_top]</top>
+                            <width>$PARAM[poster_width]</width>
+                            <height>$PARAM[poster_height]</height>
+                            <aspectratio>stretch</aspectratio>
+                            <texture diffuse="boxes/clearcases/wall_mask.png" fallback="common/blank.png" background="true">$VAR[Image_Poster]</texture>
+                        </control>
+                        <control type="image">
+                            <left>0</left>
+                            <top>0</top>
+                            <width>$PARAM[case_width]</width>
+                            <height>$PARAM[case_height]</height>
+                            <aspectratio>stretch</aspectratio>
+                            <texture background="true">boxes/clearcases/$VAR[Image_Cases]</texture>
+                        </control>
+                    </control>
+                </focusedlayout>
+            </control>
+        </definition>
+    </include>
+    
+    <include name="View_Panel_Info">
+        <control type="group">
+            <left>-140</left>
+            <top>-40</top>
+            <width>900</width>
+            <height>1080</height>
+            <control type="group">
+                <width>800</width>
+                <height>450</height>
+                <left>80</left>
+                <top>-60</top>
+                <control type="group">
+                    <include>Object_PosterBack</include>
+                    <control type="group">
+                        <include>Defs_Pad</include>
+                        <include content="Object_Artwork">
+                            <param name="id" value="57" />
+                            <param name="selectbox" value="false" />
+                            <param name="icon" value="$VAR[Image_Landscape]" />
+                            <param name="diffuse" value="diffuse/landscape-big.png" />
+                            <param name="aspectratio" value="stretch" />
+                        </include>
+                    </control>
+                </control>
+            </control>
+            <control type="group">
+                <top>470</top>
+                <visible>!ListItem($PARAM[item]).IsCollection</visible>
+                <include content="Object_Info_Panel">
+                    <param name="id" value="500" />
+                    <param name="width" value="1654" />
+                    <param name="discart" value="true" />
+                    <param name="hdsd_flag" value="true" />
+                    <param name="plot_height" value="248" />
+                    <param name="imdbvotes" value="false" />
+                    <param name="top250" value="false" />
+                </include>
+            </control>
+            <control type="group">
+                <top>490</top>
+                <visible>ListItem($PARAM[item]).IsCollection</visible>
+                <include content="Object_Info_Panel_Sets">
+                    <param name="id" value="500" />
+                    <param name="width" value="1654" />
+                    <param name="discart" value="true" />
+                    <param name="hdsd_flag" value="true" />
+                    <param name="plot_height" value="248" />
+                    <param name="imdbvotes" value="false" />
+                    <param name="top250" value="false" />
+                </include>
+            </control>
+        </control>
+    </include>
+
+    <include name="Object_Info_Panel">
+        <param name="hdsd_flag" default="false" />
+        <param name="rottentomatoes" default="true" />
+        <param name="imdbvotes" default="Skin.HasSetting(Ratings.IMDBVotes)" />
+        <param name="usermeter" default="true" />
+        <param name="imdb" default="true" />
+        <param name="tmdb" default="true" />
+        <param name="metacritic" default="true" />
+        <param name="oscars" default="true" />
+        <param name="genre" default="true" />
+        <param name="top250" default="true" />
+        <param name="titleright" default="0" />
+        <param name="container" default="" />
+        <param name="visible-details" default="true" />
+        <param name="ratings" default="true" />
+        <definition>
+            <control type="grouplist">
+                <top>-80</top>
+                <left>view_pad</left>
+                <orientation>vertical</orientation>
+                <usecontrolcoords>true</usecontrolcoords>
+                <itemgap>0</itemgap>
+                <control type="group">
+                    <height>70</height>
+                    <include content="Object_Info_Ratings_Wall" condition="!Skin.HasSetting(DisableAllRatings)">
+                        <param name="container" value="Container(57)." />
+                    </include>
+                </control>
+                <control type="grouplist">
+                    <height>50</height>
+                    <orientation>horizontal</orientation>
+                    <usecontrolcoords>true</usecontrolcoords>
+                    <itemgap>0</itemgap>
+                    <left>0</left>
+                    <right>0</right>
+                    <control type="label">
+                        <width>auto</width>
+                        <label>$VAR[Label_ShowCase_InfoLine]</label>
+                        <height>40</height>
+                        <aligny>top</aligny>
+                        <textcolor>$VAR[ColorHighlight]</textcolor>
+                        <font>font_small</font>
+                    </control>
+                </control>
+                <control type="label">
+                    <left>0</left>
+                    <right>0</right>
+                    <label>[CAPITALIZE]$VAR[Label_Genre][/CAPITALIZE]</label>
+                    <height>50</height>
+                    <aligny>top</aligny>
+                    <textcolor>main_fg_100</textcolor>
+                    <font>font_small</font>
+                    <visible>$PARAM[genre]</visible>
+                </control>
+                <control type="textbox">
+                    <label fallback="19055">$VAR[Label_Plot]</label>
+                    <height>$PARAM[plot_height]</height>
+                    <aligny>top</aligny>
+                    <textcolor>main_fg_70</textcolor>
+                    <font>font_plotbox</font>
+                </control>
+            </control>
+        </definition>
+    </include>
+
+    <include name="Object_Info_Panel_Sets">
+        <param name="hdsd_flag" default="false" />
+        <param name="rottentomatoes" default="true" />
+        <param name="imdbvotes" default="Skin.HasSetting(Ratings.IMDBVotes)" />
+        <param name="usermeter" default="true" />
+        <param name="imdb" default="true" />
+        <param name="tmdb" default="true" />
+        <param name="metacritic" default="true" />
+        <param name="oscars" default="true" />
+        <param name="genre" default="true" />
+        <param name="top250" default="true" />
+        <param name="titleright" default="0" />
+        <definition>
+            <control type="grouplist">
+                <top>-80</top>
+                <left>view_pad</left>
+                <orientation>vertical</orientation>
+                <usecontrolcoords>true</usecontrolcoords>
+                <itemgap>0</itemgap>
+                <control type="grouplist">
+                    <height>50</height>
+                    <orientation>horizontal</orientation>
+                    <usecontrolcoords>true</usecontrolcoords>
+                    <itemgap>0</itemgap>
+                    <left>0</left>
+                    <right>0</right>
+                    <control type="label">
+                        <width>auto</width>
+                        <label>$VAR[Label_ShowCase_InfoLine]</label>
+                        <height>40</height>
+                        <aligny>top</aligny>
+                        <textcolor>$VAR[ColorHighlight]</textcolor>
+                        <font>font_small</font>
+                    </control>
+                </control>
+                <control type="label">
+                    <left>0</left>
+                    <right>0</right>
+                    <label>[CAPITALIZE]$VAR[Label_Genre][/CAPITALIZE]</label>
+                    <height>50</height>
+                    <aligny>top</aligny>
+                    <textcolor>main_fg_100</textcolor>
+                    <font>font_small</font>
+                    <visible>$PARAM[genre]</visible>
+                </control>
+                <control type="textbox">
+                    <label fallback="19055">$VAR[Label_Plot]</label>
+                    <height>$PARAM[plot_height]</height>
+                    <aligny>top</aligny>
+                    <textcolor>main_fg_70</textcolor>
+                    <font>font_plotbox</font>
+                </control>
+                <include>Movie_Sets</include>
+            </control>
+        </definition>
+    </include>
+
+    <include name="Movie_Sets">
+        <control type="grouplist">
+            <top>0</top>
+            <left>0</left>
+            <width>840</width>
+            <align>left</align>
+            <orientation>horizontal</orientation>
+            <visible>ListItem($PARAM[item]).IsCollection</visible>
+            <include content="Panel_Movieset_Item">
+                <param name="label" value="0" />
+            </include>
+            <include content="Panel_Movieset_Item">
+                <param name="label" value="1" />
+            </include>
+            <include content="Panel_Movieset_Item">
+                <param name="label" value="2" />
+            </include>
+            <include content="Panel_Movieset_Item">
+                <param name="label" value="3" />
+            </include>
+            <include content="Panel_Movieset_Item">
+                <param name="label" value="4" />
+            </include>
+            <include content="Panel_Movieset_Item">
+                <param name="label" value="5" />
+            </include>
+            <include content="Panel_Movieset_Item">
+                <param name="label" value="6" />
+            </include>
+            <include content="Panel_Movieset_Item">
+                <param name="label" value="7" />
+            </include>
+            <include content="Panel_Movieset_Item">
+                <param name="label" value="8" />
+            </include>
+            <include content="Panel_Movieset_Item">
+                <param name="label" value="9" />
+            </include>
+            
+        </control>
+    </include>
+
+    <include name="Panel_Movieset_Item">
+        <param name="label" default="" />
+        <definition>
+            <control type="group">
+                <width>89</width>
+                <visible>!String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.$PARAM[label].Art.Poster))</visible>
+                <control type="image">
+                    <left>3</left>
+                    <top>10</top>
+                    <width>79</width>
+                    <height>104</height>
+                    <aspectratio>stretch</aspectratio>
+                    <texture diffuse="boxes/clearcases/wall_mask.png" fallback="common/blank.png" background="true">$INFO[Window(Home).Property(SkinHelper.ListItem.$PARAM[label].Art.Poster)]</texture>
+                </control>
+                <control type="image">
+                    <left>0</left>
+                    <top>0</top>
+                    <width>89</width>
+                    <height>120</height>
+                    <aspectratio>stretch</aspectratio>
+                    <texture background="true">boxes/clearcases/$INFO[Window(Home).Property(SkinHelper.ListItem.$PARAM[label].Resolution)]p.png</texture>
+                </control>
+            </control>
+        </definition>
+    </include>
+
+    <include name="Animation_FocusBounce_Viewlayout">
+        <animation type="Focus" reversible="false">
+            <effect type="zoom" end="135" time="100" tween="sine" easing="out" center="auto" />
+            <effect type="zoom" end="92" time="225" tween="sine" delay="100" easing="out" center="auto" />
+        </animation>
+    </include>
+
+    <include name="Object_Codecs_Items">
+        <param name="infohide" default="true" />
+        <param name="directory" default="$VAR[Defs_ColorMode_Dir]" />
+        <param name="uid" default="2001" />
+        <param name="align" default="right" />
+        <definition>
+            <control type="grouplist">
+                <visible>!Skin.HasSetting(DisableCodecs)</visible>
+                <include condition="$PARAM[infohide]">Defs_InfoDialog_Visible</include>
+                <visible>!$EXP[Exp_ShowPlotOverlay]</visible>
+                <visible>!Control.HasFocus(62)</visible>
+                <orientation>horizontal</orientation>
+                <align>left</align>
+                <height>72</height>
+                <right>-70</right>
+                <left>-70</left>
+                <bottom>-90</bottom>
+                <itemgap>20</itemgap>
+                <visible>!String.IsEmpty(ListItem.VideoCodec) + !String.IsEmpty(ListItem.AudioCodec)</visible>
+                <control type="image" id="$PARAM[uid]2">
+                    <left>-10</left>
+                    <fadetime>100</fadetime>
+                    <centertop>50%</centertop>
+                    <width>64</width>
+                    <height>56</height>
+                    <aspectratio align="left">keep</aspectratio>
+                    <texture colordiffuse="$VAR[Defs_ColorMode_ColorDiffuse]">flags/$PARAM[directory]/resolution/$INFO[ListItem.VideoResolution].png</texture>
+                    <visible>String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,episode) | String.IsEqual(ListItem.DBType,video)</visible>
+                    <visible>!String.IsEmpty(Control.GetLabel($PARAM[uid]2))</visible>
+                </control>
+                <control type="image" id="$PARAM[uid]3">
+                    <left>-10</left>
+                    <fadetime>100</fadetime>
+                    <centertop>50%</centertop>
+                    <width>64</width>
+                    <height>56</height>
+                    <aspectratio align="left">keep</aspectratio>
+                    <texture colordiffuse="$VAR[Defs_ColorMode_ColorDiffuse]">flags/$PARAM[directory]/other/$INFO[ListItem.VideoResolution].png</texture>
+                    <visible>String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,episode) | String.IsEqual(ListItem.DBType,video)</visible>
+                    <visible>!String.IsEmpty(Control.GetLabel($PARAM[uid]3))</visible>
+                </control>
+                <control type="image" id="$PARAM[uid]5">
+                    <fadetime>100</fadetime>
+                    <centertop>50%</centertop>
+                    <width>71</width>
+                    <height>56</height>
+                    <aspectratio>keep</aspectratio>
+                    <texture colordiffuse="$VAR[Defs_ColorMode_ColorDiffuse]">$VAR[Image_AudioCodec]</texture>
+                    <visible>String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,episode) | String.IsEqual(ListItem.DBType,video)</visible>
+                    <visible>!String.IsEmpty(Control.GetLabel($PARAM[uid]5))</visible>
+                </control>
+                <control type="image" id="$PARAM[uid]6">
+                    <left>7</left>
+                    <fadetime>100</fadetime>
+                    <centertop>50%</centertop>
+                    <width>52</width>
+                    <height>56</height>
+                    <aspectratio>center</aspectratio>
+                    <texture colordiffuse="$VAR[Defs_ColorMode_ColorDiffuse]">flags/$PARAM[directory]/channels/$INFO[ListItem.AudioChannels].png</texture>
+                    <visible>String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,episode) | String.IsEqual(ListItem.DBType,video)</visible>
+                    <visible>!String.IsEmpty(Control.GetLabel($PARAM[uid]6))</visible>
+                </control>
+                <control type="image" id="$PARAM[uid]7">
+                    <left>7</left>
+                    <fadetime>100</fadetime>
+                    <centertop>50%</centertop>
+                    <width>52</width>
+                    <height>56</height>
+                    <aspectratio>keep</aspectratio>
+                    <texture background="true">$INFO[Window(home).Property(SkinHelper.ListItem.StudioLogo)]</texture>
+                    <visible>String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,episode) | String.IsEqual(ListItem.DBType,video)</visible>
+                    <visible>!String.IsEmpty(Control.GetLabel($PARAM[uid]7))</visible>
+                </control>
+            </control>
+        </definition>
+    </include>
+
+    <variable name="Label_ShowCase_InfoLine">
+        <value condition="Window.IsVisible(script-script.extendedinfo-VideoList.xml)">$INFO[ListItem.MPAA,[COLOR=main_fg_100],[/COLOR]  |  ]$VAR[Label_Premiered,[COLOR=main_fg_100],[/COLOR]]</value>
+        <value condition="ListItem.IsCollection">$INFO[Window(Home).Property(SkinHelper.ListItem.Year),[COLOR=main_fg_100],[/COLOR]  |  ]$VAR[Label_Duration,[COLOR=main_fg_100],[/COLOR]  |  ]$VAR[Label_Sets_Count,[COLOR=main_fg_100],[/COLOR]]</value>
+        <value condition="[Container.Content(seasons) | Container.Content(tvshows)] + [!String.IsEmpty(ListItem.MPAA) | !String.IsEmpty(ListItem.Duration) | !String.IsEmpty(ListItem.Premiered)] + !String.IsEmpty(ListItem.Property(TotalEpisodes))">$INFO[ListItem.MPAA,[COLOR=main_fg_100],[/COLOR]  |  ]$VAR[Label_Premiered,[COLOR=main_fg_100],[/COLOR]  |  ]$VAR[Label_Duration,[COLOR=main_fg_100],[/COLOR]  |  ]$INFO[ListItem.Property(WatchedEpisodes),[COLOR=main_fg_100]$LOCALIZE[16102] , $LOCALIZE[20163] [/COLOR]]$INFO[ListItem.Property(TotalEpisodes),[COLOR=main_fg_100],[/COLOR]]</value>
+        <value condition="!String.IsEmpty(ListItem.MPAA) | !String.IsEmpty(ListItem.Duration) | !String.IsEmpty(ListItem.Premiered)">$INFO[ListItem.MPAA,[COLOR=main_fg_100],[/COLOR]  |  ]$VAR[Label_Premiered,[COLOR=main_fg_100],[/COLOR]  |  ]$VAR[Label_Duration,[COLOR=main_fg_100],[/COLOR]  |  ]$VAR[Label_EndTime,[COLOR=main_fg_100]$LOCALIZE[31106] ,[/COLOR]]</value>
+        <value condition="[String.StartsWith(Container.FolderPath,plugin://plugin.program.advanced.launcher/) | String.StartsWith(Container.FolderPath,plugin://plugin.program.advanced.emulator.launcher/) | String.StartsWith(Container.FolderPath,plugin://plugin.program.advanced.MAME.launcher/)]">$INFO[ListItem.Property(platform),[COLOR=main_fg_100],[/COLOR]]$INFO[ListItem.Studio,  |  [COLOR=main_fg_100],[/COLOR]]$INFO[ListItem.Year,  |  [COLOR=main_fg_100],[/COLOR]]$INFO[ListItem.Property(nplayers),  |  [COLOR=main_fg_100], $LOCALIZE[31308][/COLOR]]$INFO[ListItem.Property(ESRB),  |  [COLOR=main_fg_100],[/COLOR]]</value>
+        <value condition="Control.IsVisible(502)">[COLOR=main_fg_100]$LOCALIZE[14224][/COLOR]</value>
+        <value condition="!String.IsEmpty(Container.FolderName)">$INFO[Container.FolderName,[COLOR=main_fg_100],[/COLOR]]</value>
+    </variable>
+
+    <variable name="Label_Genre">
+        <value condition="ListItem.IsCollection">$INFO[Window(Home).Property(SkinHelper.ListItem.Genre)]</value>
+        <value condition="!String.IsEmpty(ListItem.Genre)">$INFO[ListItem.Genre]</value>
+        <value condition="!String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.Genre))">$INFO[Window(Home).Property(SkinHelper.ListItem.Genre)]</value>
+        <value>Other</value>
+    </variable>
+
+    <variable name="Label_EndTime">
+        <value condition="!String.IsEmpty(ListItem.EndTime) + !String.IsEqual(ListItem.EndTime,System.Time)">$INFO[ListItem.EndTime]</value>
+    </variable>
+
+    <variable name="Image_Cases">
+        <value condition="SubString(ListItem.Filename,.3D.)">3d.png</value>
+        <value condition="ListItem.IsCollection">set.png</value>
+        <value condition="Container.Content(tvshows) | Container.Content(seasons)">tv.png</value>
+        <value condition="SubString(ListItem.VideoResolution,4k)">4k.png</value>
+        <value>$INFO[ListItem.VideoResolution]p.png</value>
+    </variable>
+
+</includes>
+
