@@ -15,11 +15,46 @@
         <action>ActivateWindow(Videos,special://skin/extras/playlists/InProgressMovies.xsp,return)</action>
     </shortcut>
     <shortcut>
-        <label>$LOCALIZE[590]</label>
+        <label>Movies you may like</label>
         <label2 />
         <icon />
         <thumb />
-        <action>ActivateWindow(Videos,special://skin/extras/playlists/RandomMovies.xsp,return)</action>
+        <action>ActivateWindow(Videos,plugin://script.magic.skin.helper/?info=getsimilar&amp;tag=Movies&amp;type=movie&amp;pos=4,return)</action>
+    </shortcut>
+    <shortcut>
+        <label>Because you watched $INFO[Container(30104).ListItem.Property(searchstring)]</label>
+        <label2 />
+        <icon />
+        <thumb />
+        <action>ActivateWindow(Videos,plugin://script.magic.skin.helper/?info=getsimilar&amp;tag=Movies&amp;type=movie,return)</action>
+    </shortcut>
+    <shortcut>
+        <label>Top 250 Movies</label>
+        <label2 />
+        <icon />
+        <thumb />
+        <action>ActivateWindow(Videos,special://skin/extras/playlists/Top250Movies.xsp,return)</action>
+    </shortcut>
+    <shortcut>
+        <label>Because you watched $INFO[Container(30106).ListItem.Property(searchstring)]</label>
+        <label2 />
+        <icon />
+        <thumb />
+        <action>ActivateWindow(Videos,plugin://script.magic.skin.helper/?info=getsimilar&amp;tag=Movies&amp;type=movie&amp;pos=0,return)</action>
+    </shortcut>
+    <shortcut>
+        <label>Suggestions by Genre $INFO[Container(30107).ListItem.Property(searchstring),',']</label>
+        <label2 />
+        <icon />
+        <thumb />
+        <action>ActivateWindow(Videos,plugin://script.magic.skin.helper/?info=getbygenre&amp;tag=Movies&amp;type=movie,return)</action>
+    </shortcut>
+    <shortcut>
+        <label>$LOCALIZE[31257]</label>
+        <label2 />
+        <icon />
+        <thumb />
+        <action>ActivateWindow(Videos,library://video/movies/genres.xml,return)</action>
     </shortcut>
     
 </shortcuts>

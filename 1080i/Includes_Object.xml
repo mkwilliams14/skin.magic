@@ -740,7 +740,7 @@
     </include>
 
     <include name="Object_Info_Plot">
-        <param name="height" default="80" />
+        <param name="height" default="180" />
         <param name="title" default="" />
         <param name="label" default="$VAR[Label_Plot]" />
         <param name="control-type" default="textbox" />

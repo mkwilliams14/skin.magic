@@ -57,8 +57,6 @@
     </override>
 
     <!-- Property defaults for widgets -->
-    <!-- Movies -->
-    <propertydefault labelID="31210" group="20342.1" property="widgetAspect">Landscape</propertydefault>
     <!-- TV Shows -->
     <propertydefault labelID="31173" group="tvshows.1" property="widgetAspect">Landscape</propertydefault>
     <!-- Music -->

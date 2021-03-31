@@ -38,7 +38,9 @@
                 <visible allowhiddenfocus="true">!$EXP[Exp_CommonAnimation]</visible>
                 <include>Animation_Common</include>
                 <control type="group">
-                    <include>View_Pad</include>
+                    <include content="View_Pad">
+                        <param name="top" value="120" />
+                    </include>
                     <animation effect="fade" reversible="false" start="0" end="100" delay="399" time="1" condition="![Control.HasFocus(5151) | Control.HasFocus(5252) | Control.HasFocus(5353) | Control.HasFocus(5454) | Control.HasFocus(5656)]">Conditional</animation>
                     <animation effect="fade" reversible="false" end="0" start="100" condition="[Control.HasFocus(5151) | Control.HasFocus(5252) | Control.HasFocus(5353) | Control.HasFocus(5454) | Control.HasFocus(5656)]">Conditional</animation>
                     <control type="group" description="Top Half">
@@ -47,7 +49,7 @@
                         <include content="View_Info_Grouplist">
                             <param name="container" value="Container." />
                             <top>-15</top>
-                            <height>285</height>
+                            <height>365</height>
                             <visible>!Control.HasFocus(530)</visible>
                             <visible>!Control.IsVisible(56)</visible>
                             <visible>![Control.IsVisible(50) | Control.IsVisible(500) | Control.IsVisible(55) | Control.IsVisible(57) | Control.IsVisible(58) | Control.IsVisible(520)]</visible>
@@ -59,7 +61,7 @@
                             <param name="infoline-label" value="$VAR[Label_Home_InfoLine]" />
                             <param name="infoline-image" value="$VAR[Image_Home_VideoQuality]" />
                             <top>-15</top>
-                            <height>285</height>
+                            <height>365</height>
                             <visible>[Control.IsVisible(50) | Control.IsVisible(500) | Control.IsVisible(55) | Control.IsVisible(520)]</visible>
                             <visible>!Control.IsVisible(56)</visible>
                             <include>Viewtype_Info_Right</include>
@@ -106,6 +108,11 @@
                             <visible>!Control.IsVisible(520)</visible>
                         </include>
                     </control>
+                </control>
+                <control type="group">
+                    <include>View_Pad</include>
+                    <animation effect="fade" reversible="false" start="0" end="100" delay="399" time="1" condition="![Control.HasFocus(5151) | Control.HasFocus(5252) | Control.HasFocus(5353) | Control.HasFocus(5454) | Control.HasFocus(5656)]">Conditional</animation>
+                    <animation effect="fade" reversible="false" end="0" start="100" condition="[Control.HasFocus(5151) | Control.HasFocus(5252) | Control.HasFocus(5353) | Control.HasFocus(5454) | Control.HasFocus(5656)]">Conditional</animation>
                     <control type="group" description="Bottom Half">
                         <animation effect="fade" end="0" start="100" condition="Integer.IsEqual(Container.NumAllItems,0)">Conditional</animation>
                         <include content="Viewtype_BackPanel">
@@ -310,7 +317,7 @@
         <param name="itemlayout-width" default="item_poster_width" />
         <param name="itemlayout-height" default="360" />
         <param name="itemlayout" default="Viewtype_Poster_Itemlayout" />
-        <param name="height" default="360" />
+        <param name="height" default="370" />
         <param name="movement" default="6" />
         <param name="focusposition" default="0" />
         <param name="icon" default="$VAR[Image_Poster]" />

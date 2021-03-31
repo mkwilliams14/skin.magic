@@ -936,17 +936,15 @@
 		<item id="1">
 			<property name="id">$NUMBER[1]</property>
 			<property name="mainmenuid">1</property>
-			<label>Suggestions based on random watched item</label>
-			<label2>Video Add-On</label2>
+			<label>$LOCALIZE[31173]</label>
+			<label2 />
 			<icon>special://skin/extras/icons/shortcut.png</icon>
-			<thumb>image://special%3a%2f%2fhome%2faddons%2fscript.magic.skin.helper%2fresources%2ficon.png/</thumb>
-			<property name="labelID">suggestionsbasedonrandomwatcheditem</property>
-			<property name="defaultID" />
-			<property name="widgetTarget">videos</property>
-			<property name="translatedPath">ActivateWindow(Videos,"plugin://script.magic.skin.helper/?info=getsimilar&amp;type=movie&amp;tag=Movies",return)</property>
-			<onclick>ActivateWindow(Videos,"plugin://script.magic.skin.helper/?info=getsimilar&amp;type=movie&amp;tag=Movies",return)</onclick>
-			<property name="path">ActivateWindow(Videos,"plugin://script.magic.skin.helper/?info=getsimilar&amp;type=movie&amp;tag=Movies",return)</property>
-			<property name="list">plugin://script.magic.skin.helper/?info=getsimilar&amp;type=movie&amp;tag=Movies</property>
+			<thumb />
+			<property name="labelID">31173</property>
+			<property name="defaultID">31173</property>
+			<onclick>ActivateWindow(Videos,special://skin/extras/playlists/NewMovies.xsp,return)</onclick>
+			<property name="path">ActivateWindow(Videos,special://skin/extras/playlists/NewMovies.xsp,return)</property>
+			<property name="list">special://skin/extras/playlists/NewMovies.xsp</property>
 			<visible>[String.IsEqual(System.ProfileName,Master user)] + String.IsEqual(Container(301).ListItem.Property(submenuVisibility),num-20342)</visible>
 			<property name="group">20342.1</property>
 			<property name="isSubmenu">True</property>
@@ -960,7 +958,6 @@
 			<thumb />
 			<property name="labelID">31210</property>
 			<property name="defaultID">31210</property>
-			<property name="widgetAspect">Landscape</property>
 			<onclick>ActivateWindow(Videos,special://skin/extras/playlists/InProgressMovies.xsp,return)</onclick>
 			<property name="path">ActivateWindow(Videos,special://skin/extras/playlists/InProgressMovies.xsp,return)</property>
 			<property name="list">special://skin/extras/playlists/InProgressMovies.xsp</property>
@@ -971,16 +968,97 @@
 		<item id="3">
 			<property name="id">$NUMBER[3]</property>
 			<property name="mainmenuid">1</property>
-			<label>$LOCALIZE[590]</label>
+			<label>Movies you may like</label>
 			<label2 />
 			<icon>special://skin/extras/icons/shortcut.png</icon>
 			<thumb />
-			<property name="labelID">590</property>
-			<property name="defaultID">590</property>
-			<onclick>ActivateWindow(Videos,special://skin/extras/playlists/RandomMovies.xsp,return)</onclick>
-			<property name="path">ActivateWindow(Videos,special://skin/extras/playlists/RandomMovies.xsp,return)</property>
-			<property name="list">special://skin/extras/playlists/RandomMovies.xsp</property>
+			<property name="labelID">moviesyoumaylike</property>
+			<property name="defaultID">moviesyoumaylike</property>
+			<onclick>ActivateWindow(Videos,plugin://script.magic.skin.helper/?info=getsimilar&amp;tag=Movies&amp;type=movie&amp;pos=4,return)</onclick>
+			<property name="path">ActivateWindow(Videos,plugin://script.magic.skin.helper/?info=getsimilar&amp;tag=Movies&amp;type=movie&amp;pos=4,return)</property>
+			<property name="list">plugin://script.magic.skin.helper/?info=getsimilar&amp;tag=Movies&amp;type=movie&amp;pos=4</property>
 			<visible>[String.IsEqual(System.ProfileName,Master user)] + String.IsEqual(Container(301).ListItem.Property(submenuVisibility),num-20342)</visible>
+			<property name="group">20342.1</property>
+			<property name="isSubmenu">True</property>
+		</item>
+		<item id="4">
+			<property name="id">$NUMBER[4]</property>
+			<property name="mainmenuid">1</property>
+			<label>Because you watched $INFO[Container(30104).ListItem.Property(searchstring)]</label>
+			<label2 />
+			<icon>special://skin/extras/icons/shortcut.png</icon>
+			<thumb />
+			<property name="labelID">becauseyouwatched-info-container-30104-listitem-property-searchstring</property>
+			<property name="defaultID">becauseyouwatched-info-container-30104-listitem-property-searchstring</property>
+			<onclick>ActivateWindow(Videos,plugin://script.magic.skin.helper/?info=getsimilar&amp;tag=Movies&amp;type=movie,return)</onclick>
+			<property name="path">ActivateWindow(Videos,plugin://script.magic.skin.helper/?info=getsimilar&amp;tag=Movies&amp;type=movie,return)</property>
+			<property name="list">plugin://script.magic.skin.helper/?info=getsimilar&amp;tag=Movies&amp;type=movie</property>
+			<visible>[String.IsEqual(System.ProfileName,Master user)] + String.IsEqual(Container(301).ListItem.Property(submenuVisibility),num-20342)</visible>
+			<property name="group">20342.1</property>
+			<property name="isSubmenu">True</property>
+		</item>
+		<item id="5">
+			<property name="id">$NUMBER[5]</property>
+			<property name="mainmenuid">1</property>
+			<label>Top 250 Movies</label>
+			<label2 />
+			<icon>special://skin/extras/icons/shortcut.png</icon>
+			<thumb />
+			<property name="labelID">top250movies</property>
+			<property name="defaultID">top250movies</property>
+			<onclick>ActivateWindow(Videos,special://skin/extras/playlists/Top250Movies.xsp,return)</onclick>
+			<property name="path">ActivateWindow(Videos,special://skin/extras/playlists/Top250Movies.xsp,return)</property>
+			<property name="list">special://skin/extras/playlists/Top250Movies.xsp</property>
+			<visible>[String.IsEqual(System.ProfileName,Master user)] + String.IsEqual(Container(301).ListItem.Property(submenuVisibility),num-20342)</visible>
+			<property name="group">20342.1</property>
+			<property name="isSubmenu">True</property>
+		</item>
+		<item id="6">
+			<property name="id">$NUMBER[6]</property>
+			<property name="mainmenuid">1</property>
+			<label>Because you watched $INFO[Container(30106).ListItem.Property(searchstring)]</label>
+			<label2 />
+			<icon>special://skin/extras/icons/shortcut.png</icon>
+			<thumb />
+			<property name="labelID">becauseyouwatched-info-container-30106-listitem-property-searchstring</property>
+			<property name="defaultID">becauseyouwatched-info-container-30106-listitem-property-searchstring</property>
+			<onclick>ActivateWindow(Videos,plugin://script.magic.skin.helper/?info=getsimilar&amp;tag=Movies&amp;type=movie&amp;pos=0,return)</onclick>
+			<property name="path">ActivateWindow(Videos,plugin://script.magic.skin.helper/?info=getsimilar&amp;tag=Movies&amp;type=movie&amp;pos=0,return)</property>
+			<property name="list">plugin://script.magic.skin.helper/?info=getsimilar&amp;tag=Movies&amp;type=movie&amp;pos=0</property>
+			<visible>[String.IsEqual(System.ProfileName,Master user)] + String.IsEqual(Container(301).ListItem.Property(submenuVisibility),num-20342)</visible>
+			<property name="group">20342.1</property>
+			<property name="isSubmenu">True</property>
+		</item>
+		<item id="7">
+			<property name="id">$NUMBER[7]</property>
+			<property name="mainmenuid">1</property>
+			<label>Suggestions by Genre $INFO[Container(30107).ListItem.Property(searchstring),',']</label>
+			<label2 />
+			<icon>special://skin/extras/icons/shortcut.png</icon>
+			<thumb />
+			<property name="labelID">suggestionsbygenre-info-container-30107-listitem-property-searchstring</property>
+			<property name="defaultID">suggestionsbygenre-info-container-30107-listitem-property-searchstring</property>
+			<onclick>ActivateWindow(Videos,plugin://script.magic.skin.helper/?info=getbygenre&amp;tag=Movies&amp;type=movie,return)</onclick>
+			<property name="path">ActivateWindow(Videos,plugin://script.magic.skin.helper/?info=getbygenre&amp;tag=Movies&amp;type=movie,return)</property>
+			<property name="list">plugin://script.magic.skin.helper/?info=getbygenre&amp;tag=Movies&amp;type=movie</property>
+			<visible>[String.IsEqual(System.ProfileName,Master user)] + String.IsEqual(Container(301).ListItem.Property(submenuVisibility),num-20342)</visible>
+			<property name="group">20342.1</property>
+			<property name="isSubmenu">True</property>
+		</item>
+		<item id="8">
+			<property name="id">$NUMBER[8]</property>
+			<property name="mainmenuid">1</property>
+			<label>$LOCALIZE[31257]</label>
+			<label2 />
+			<icon>special://skin/extras/icons/shortcut.png</icon>
+			<thumb />
+			<property name="labelID">31257</property>
+			<property name="defaultID">31257</property>
+			<visible>[Library.HasContent(Movies)] + String.IsEqual(Container(301).ListItem.Property(submenuVisibility),num-20342)</visible>
+			<onclick>ActivateWindow(Videos,library://video/movies/genres.xml,return)</onclick>
+			<property name="path">ActivateWindow(Videos,library://video/movies/genres.xml,return)</property>
+			<property name="list">library://video/movies/genres.xml</property>
+			<visible>String.IsEqual(System.ProfileName,Master user)</visible>
 			<property name="group">20342.1</property>
 			<property name="isSubmenu">True</property>
 		</item>
@@ -2023,17 +2101,15 @@
 		<item id="1">
 			<property name="id">$NUMBER[1]</property>
 			<property name="mainmenuid">1</property>
-			<label>Suggestions based on random watched item</label>
-			<label2>Video Add-On</label2>
+			<label>$LOCALIZE[31173]</label>
+			<label2 />
 			<icon>special://skin/extras/icons/shortcut.png</icon>
-			<thumb>image://special%3a%2f%2fhome%2faddons%2fscript.magic.skin.helper%2fresources%2ficon.png/</thumb>
-			<property name="labelID">suggestionsbasedonrandomwatcheditem</property>
-			<property name="defaultID" />
-			<property name="widgetTarget">videos</property>
-			<property name="translatedPath">ActivateWindow(Videos,"plugin://script.magic.skin.helper/?info=getsimilar&amp;type=movie&amp;tag=Movies",return)</property>
-			<onclick>ActivateWindow(Videos,"plugin://script.magic.skin.helper/?info=getsimilar&amp;type=movie&amp;tag=Movies",return)</onclick>
-			<property name="path">ActivateWindow(Videos,"plugin://script.magic.skin.helper/?info=getsimilar&amp;type=movie&amp;tag=Movies",return)</property>
-			<property name="list">plugin://script.magic.skin.helper/?info=getsimilar&amp;type=movie&amp;tag=Movies</property>
+			<thumb />
+			<property name="labelID">31173</property>
+			<property name="defaultID">31173</property>
+			<onclick>ActivateWindow(Videos,special://skin/extras/playlists/NewMovies.xsp,return)</onclick>
+			<property name="path">ActivateWindow(Videos,special://skin/extras/playlists/NewMovies.xsp,return)</property>
+			<property name="list">special://skin/extras/playlists/NewMovies.xsp</property>
 			<visible>String.IsEqual(System.ProfileName,Master user)</visible>
 			<property name="group">20342.1</property>
 			<property name="isSubmenu">True</property>
@@ -2047,7 +2123,6 @@
 			<thumb />
 			<property name="labelID">31210</property>
 			<property name="defaultID">31210</property>
-			<property name="widgetAspect">Landscape</property>
 			<onclick>ActivateWindow(Videos,special://skin/extras/playlists/InProgressMovies.xsp,return)</onclick>
 			<property name="path">ActivateWindow(Videos,special://skin/extras/playlists/InProgressMovies.xsp,return)</property>
 			<property name="list">special://skin/extras/playlists/InProgressMovies.xsp</property>
@@ -2058,15 +2133,96 @@
 		<item id="3">
 			<property name="id">$NUMBER[3]</property>
 			<property name="mainmenuid">1</property>
-			<label>$LOCALIZE[590]</label>
+			<label>Movies you may like</label>
 			<label2 />
 			<icon>special://skin/extras/icons/shortcut.png</icon>
 			<thumb />
-			<property name="labelID">590</property>
-			<property name="defaultID">590</property>
-			<onclick>ActivateWindow(Videos,special://skin/extras/playlists/RandomMovies.xsp,return)</onclick>
-			<property name="path">ActivateWindow(Videos,special://skin/extras/playlists/RandomMovies.xsp,return)</property>
-			<property name="list">special://skin/extras/playlists/RandomMovies.xsp</property>
+			<property name="labelID">moviesyoumaylike</property>
+			<property name="defaultID">moviesyoumaylike</property>
+			<onclick>ActivateWindow(Videos,plugin://script.magic.skin.helper/?info=getsimilar&amp;tag=Movies&amp;type=movie&amp;pos=4,return)</onclick>
+			<property name="path">ActivateWindow(Videos,plugin://script.magic.skin.helper/?info=getsimilar&amp;tag=Movies&amp;type=movie&amp;pos=4,return)</property>
+			<property name="list">plugin://script.magic.skin.helper/?info=getsimilar&amp;tag=Movies&amp;type=movie&amp;pos=4</property>
+			<visible>String.IsEqual(System.ProfileName,Master user)</visible>
+			<property name="group">20342.1</property>
+			<property name="isSubmenu">True</property>
+		</item>
+		<item id="4">
+			<property name="id">$NUMBER[4]</property>
+			<property name="mainmenuid">1</property>
+			<label>Because you watched $INFO[Container(30104).ListItem.Property(searchstring)]</label>
+			<label2 />
+			<icon>special://skin/extras/icons/shortcut.png</icon>
+			<thumb />
+			<property name="labelID">becauseyouwatched-info-container-30104-listitem-property-searchstring</property>
+			<property name="defaultID">becauseyouwatched-info-container-30104-listitem-property-searchstring</property>
+			<onclick>ActivateWindow(Videos,plugin://script.magic.skin.helper/?info=getsimilar&amp;tag=Movies&amp;type=movie,return)</onclick>
+			<property name="path">ActivateWindow(Videos,plugin://script.magic.skin.helper/?info=getsimilar&amp;tag=Movies&amp;type=movie,return)</property>
+			<property name="list">plugin://script.magic.skin.helper/?info=getsimilar&amp;tag=Movies&amp;type=movie</property>
+			<visible>String.IsEqual(System.ProfileName,Master user)</visible>
+			<property name="group">20342.1</property>
+			<property name="isSubmenu">True</property>
+		</item>
+		<item id="5">
+			<property name="id">$NUMBER[5]</property>
+			<property name="mainmenuid">1</property>
+			<label>Top 250 Movies</label>
+			<label2 />
+			<icon>special://skin/extras/icons/shortcut.png</icon>
+			<thumb />
+			<property name="labelID">top250movies</property>
+			<property name="defaultID">top250movies</property>
+			<onclick>ActivateWindow(Videos,special://skin/extras/playlists/Top250Movies.xsp,return)</onclick>
+			<property name="path">ActivateWindow(Videos,special://skin/extras/playlists/Top250Movies.xsp,return)</property>
+			<property name="list">special://skin/extras/playlists/Top250Movies.xsp</property>
+			<visible>String.IsEqual(System.ProfileName,Master user)</visible>
+			<property name="group">20342.1</property>
+			<property name="isSubmenu">True</property>
+		</item>
+		<item id="6">
+			<property name="id">$NUMBER[6]</property>
+			<property name="mainmenuid">1</property>
+			<label>Because you watched $INFO[Container(30106).ListItem.Property(searchstring)]</label>
+			<label2 />
+			<icon>special://skin/extras/icons/shortcut.png</icon>
+			<thumb />
+			<property name="labelID">becauseyouwatched-info-container-30106-listitem-property-searchstring</property>
+			<property name="defaultID">becauseyouwatched-info-container-30106-listitem-property-searchstring</property>
+			<onclick>ActivateWindow(Videos,plugin://script.magic.skin.helper/?info=getsimilar&amp;tag=Movies&amp;type=movie&amp;pos=0,return)</onclick>
+			<property name="path">ActivateWindow(Videos,plugin://script.magic.skin.helper/?info=getsimilar&amp;tag=Movies&amp;type=movie&amp;pos=0,return)</property>
+			<property name="list">plugin://script.magic.skin.helper/?info=getsimilar&amp;tag=Movies&amp;type=movie&amp;pos=0</property>
+			<visible>String.IsEqual(System.ProfileName,Master user)</visible>
+			<property name="group">20342.1</property>
+			<property name="isSubmenu">True</property>
+		</item>
+		<item id="7">
+			<property name="id">$NUMBER[7]</property>
+			<property name="mainmenuid">1</property>
+			<label>Suggestions by Genre $INFO[Container(30107).ListItem.Property(searchstring),',']</label>
+			<label2 />
+			<icon>special://skin/extras/icons/shortcut.png</icon>
+			<thumb />
+			<property name="labelID">suggestionsbygenre-info-container-30107-listitem-property-searchstring</property>
+			<property name="defaultID">suggestionsbygenre-info-container-30107-listitem-property-searchstring</property>
+			<onclick>ActivateWindow(Videos,plugin://script.magic.skin.helper/?info=getbygenre&amp;tag=Movies&amp;type=movie,return)</onclick>
+			<property name="path">ActivateWindow(Videos,plugin://script.magic.skin.helper/?info=getbygenre&amp;tag=Movies&amp;type=movie,return)</property>
+			<property name="list">plugin://script.magic.skin.helper/?info=getbygenre&amp;tag=Movies&amp;type=movie</property>
+			<visible>String.IsEqual(System.ProfileName,Master user)</visible>
+			<property name="group">20342.1</property>
+			<property name="isSubmenu">True</property>
+		</item>
+		<item id="8">
+			<property name="id">$NUMBER[8]</property>
+			<property name="mainmenuid">1</property>
+			<label>$LOCALIZE[31257]</label>
+			<label2 />
+			<icon>special://skin/extras/icons/shortcut.png</icon>
+			<thumb />
+			<property name="labelID">31257</property>
+			<property name="defaultID">31257</property>
+			<visible>Library.HasContent(Movies)</visible>
+			<onclick>ActivateWindow(Videos,library://video/movies/genres.xml,return)</onclick>
+			<property name="path">ActivateWindow(Videos,library://video/movies/genres.xml,return)</property>
+			<property name="list">library://video/movies/genres.xml</property>
 			<visible>String.IsEqual(System.ProfileName,Master user)</visible>
 			<property name="group">20342.1</property>
 			<property name="isSubmenu">True</property>
@@ -2076,17 +2232,15 @@
 		<item id="1">
 			<property name="id">$NUMBER[1]</property>
 			<property name="mainmenuid">1</property>
-			<label>Suggestions based on random watched item</label>
-			<label2>Video Add-On</label2>
+			<label>$LOCALIZE[31173]</label>
+			<label2 />
 			<icon>special://skin/extras/icons/shortcut.png</icon>
-			<thumb>image://special%3a%2f%2fhome%2faddons%2fscript.magic.skin.helper%2fresources%2ficon.png/</thumb>
-			<property name="labelID">suggestionsbasedonrandomwatcheditem</property>
-			<property name="defaultID" />
-			<property name="widgetTarget">videos</property>
-			<property name="translatedPath">ActivateWindow(Videos,"plugin://script.magic.skin.helper/?info=getsimilar&amp;type=movie&amp;tag=Movies",return)</property>
-			<onclick>ActivateWindow(Videos,"plugin://script.magic.skin.helper/?info=getsimilar&amp;type=movie&amp;tag=Movies",return)</onclick>
-			<property name="path">ActivateWindow(Videos,"plugin://script.magic.skin.helper/?info=getsimilar&amp;type=movie&amp;tag=Movies",return)</property>
-			<property name="list">plugin://script.magic.skin.helper/?info=getsimilar&amp;type=movie&amp;tag=Movies</property>
+			<thumb />
+			<property name="labelID">31173</property>
+			<property name="defaultID">31173</property>
+			<onclick>ActivateWindow(Videos,special://skin/extras/playlists/NewMovies.xsp,return)</onclick>
+			<property name="path">ActivateWindow(Videos,special://skin/extras/playlists/NewMovies.xsp,return)</property>
+			<property name="list">special://skin/extras/playlists/NewMovies.xsp</property>
 			<visible>[String.IsEqual(System.ProfileName,Master user)] + String.IsEqual(Window(10000).Property(submenuVisibility),num-20342)</visible>
 			<property name="group">20342.1</property>
 			<property name="isSubmenu">True</property>
@@ -2100,7 +2254,6 @@
 			<thumb />
 			<property name="labelID">31210</property>
 			<property name="defaultID">31210</property>
-			<property name="widgetAspect">Landscape</property>
 			<onclick>ActivateWindow(Videos,special://skin/extras/playlists/InProgressMovies.xsp,return)</onclick>
 			<property name="path">ActivateWindow(Videos,special://skin/extras/playlists/InProgressMovies.xsp,return)</property>
 			<property name="list">special://skin/extras/playlists/InProgressMovies.xsp</property>
@@ -2111,16 +2264,97 @@
 		<item id="3">
 			<property name="id">$NUMBER[3]</property>
 			<property name="mainmenuid">1</property>
-			<label>$LOCALIZE[590]</label>
+			<label>Movies you may like</label>
 			<label2 />
 			<icon>special://skin/extras/icons/shortcut.png</icon>
 			<thumb />
-			<property name="labelID">590</property>
-			<property name="defaultID">590</property>
-			<onclick>ActivateWindow(Videos,special://skin/extras/playlists/RandomMovies.xsp,return)</onclick>
-			<property name="path">ActivateWindow(Videos,special://skin/extras/playlists/RandomMovies.xsp,return)</property>
-			<property name="list">special://skin/extras/playlists/RandomMovies.xsp</property>
+			<property name="labelID">moviesyoumaylike</property>
+			<property name="defaultID">moviesyoumaylike</property>
+			<onclick>ActivateWindow(Videos,plugin://script.magic.skin.helper/?info=getsimilar&amp;tag=Movies&amp;type=movie&amp;pos=4,return)</onclick>
+			<property name="path">ActivateWindow(Videos,plugin://script.magic.skin.helper/?info=getsimilar&amp;tag=Movies&amp;type=movie&amp;pos=4,return)</property>
+			<property name="list">plugin://script.magic.skin.helper/?info=getsimilar&amp;tag=Movies&amp;type=movie&amp;pos=4</property>
 			<visible>[String.IsEqual(System.ProfileName,Master user)] + String.IsEqual(Window(10000).Property(submenuVisibility),num-20342)</visible>
+			<property name="group">20342.1</property>
+			<property name="isSubmenu">True</property>
+		</item>
+		<item id="4">
+			<property name="id">$NUMBER[4]</property>
+			<property name="mainmenuid">1</property>
+			<label>Because you watched $INFO[Container(30104).ListItem.Property(searchstring)]</label>
+			<label2 />
+			<icon>special://skin/extras/icons/shortcut.png</icon>
+			<thumb />
+			<property name="labelID">becauseyouwatched-info-container-30104-listitem-property-searchstring</property>
+			<property name="defaultID">becauseyouwatched-info-container-30104-listitem-property-searchstring</property>
+			<onclick>ActivateWindow(Videos,plugin://script.magic.skin.helper/?info=getsimilar&amp;tag=Movies&amp;type=movie,return)</onclick>
+			<property name="path">ActivateWindow(Videos,plugin://script.magic.skin.helper/?info=getsimilar&amp;tag=Movies&amp;type=movie,return)</property>
+			<property name="list">plugin://script.magic.skin.helper/?info=getsimilar&amp;tag=Movies&amp;type=movie</property>
+			<visible>[String.IsEqual(System.ProfileName,Master user)] + String.IsEqual(Window(10000).Property(submenuVisibility),num-20342)</visible>
+			<property name="group">20342.1</property>
+			<property name="isSubmenu">True</property>
+		</item>
+		<item id="5">
+			<property name="id">$NUMBER[5]</property>
+			<property name="mainmenuid">1</property>
+			<label>Top 250 Movies</label>
+			<label2 />
+			<icon>special://skin/extras/icons/shortcut.png</icon>
+			<thumb />
+			<property name="labelID">top250movies</property>
+			<property name="defaultID">top250movies</property>
+			<onclick>ActivateWindow(Videos,special://skin/extras/playlists/Top250Movies.xsp,return)</onclick>
+			<property name="path">ActivateWindow(Videos,special://skin/extras/playlists/Top250Movies.xsp,return)</property>
+			<property name="list">special://skin/extras/playlists/Top250Movies.xsp</property>
+			<visible>[String.IsEqual(System.ProfileName,Master user)] + String.IsEqual(Window(10000).Property(submenuVisibility),num-20342)</visible>
+			<property name="group">20342.1</property>
+			<property name="isSubmenu">True</property>
+		</item>
+		<item id="6">
+			<property name="id">$NUMBER[6]</property>
+			<property name="mainmenuid">1</property>
+			<label>Because you watched $INFO[Container(30106).ListItem.Property(searchstring)]</label>
+			<label2 />
+			<icon>special://skin/extras/icons/shortcut.png</icon>
+			<thumb />
+			<property name="labelID">becauseyouwatched-info-container-30106-listitem-property-searchstring</property>
+			<property name="defaultID">becauseyouwatched-info-container-30106-listitem-property-searchstring</property>
+			<onclick>ActivateWindow(Videos,plugin://script.magic.skin.helper/?info=getsimilar&amp;tag=Movies&amp;type=movie&amp;pos=0,return)</onclick>
+			<property name="path">ActivateWindow(Videos,plugin://script.magic.skin.helper/?info=getsimilar&amp;tag=Movies&amp;type=movie&amp;pos=0,return)</property>
+			<property name="list">plugin://script.magic.skin.helper/?info=getsimilar&amp;tag=Movies&amp;type=movie&amp;pos=0</property>
+			<visible>[String.IsEqual(System.ProfileName,Master user)] + String.IsEqual(Window(10000).Property(submenuVisibility),num-20342)</visible>
+			<property name="group">20342.1</property>
+			<property name="isSubmenu">True</property>
+		</item>
+		<item id="7">
+			<property name="id">$NUMBER[7]</property>
+			<property name="mainmenuid">1</property>
+			<label>Suggestions by Genre $INFO[Container(30107).ListItem.Property(searchstring),',']</label>
+			<label2 />
+			<icon>special://skin/extras/icons/shortcut.png</icon>
+			<thumb />
+			<property name="labelID">suggestionsbygenre-info-container-30107-listitem-property-searchstring</property>
+			<property name="defaultID">suggestionsbygenre-info-container-30107-listitem-property-searchstring</property>
+			<onclick>ActivateWindow(Videos,plugin://script.magic.skin.helper/?info=getbygenre&amp;tag=Movies&amp;type=movie,return)</onclick>
+			<property name="path">ActivateWindow(Videos,plugin://script.magic.skin.helper/?info=getbygenre&amp;tag=Movies&amp;type=movie,return)</property>
+			<property name="list">plugin://script.magic.skin.helper/?info=getbygenre&amp;tag=Movies&amp;type=movie</property>
+			<visible>[String.IsEqual(System.ProfileName,Master user)] + String.IsEqual(Window(10000).Property(submenuVisibility),num-20342)</visible>
+			<property name="group">20342.1</property>
+			<property name="isSubmenu">True</property>
+		</item>
+		<item id="8">
+			<property name="id">$NUMBER[8]</property>
+			<property name="mainmenuid">1</property>
+			<label>$LOCALIZE[31257]</label>
+			<label2 />
+			<icon>special://skin/extras/icons/shortcut.png</icon>
+			<thumb />
+			<property name="labelID">31257</property>
+			<property name="defaultID">31257</property>
+			<visible>[Library.HasContent(Movies)] + String.IsEqual(Window(10000).Property(submenuVisibility),num-20342)</visible>
+			<onclick>ActivateWindow(Videos,library://video/movies/genres.xml,return)</onclick>
+			<property name="path">ActivateWindow(Videos,library://video/movies/genres.xml,return)</property>
+			<property name="list">library://video/movies/genres.xml</property>
+			<visible>String.IsEqual(System.ProfileName,Master user)</visible>
 			<property name="group">20342.1</property>
 			<property name="isSubmenu">True</property>
 		</item>
@@ -2310,7 +2544,7 @@
 					<include content="Info_Widget_Poster" condition="true">
 						<param name="groupid" value="40101" />
 						<param name="id" value="30101" />
-						<param name="label" value="Suggestions based on random watched item" />
+						<param name="label" value="$LOCALIZE[31173]" />
 						<param name="viewtype-include" value="Viewtype_Poster" />
 						<param name="widget-type" value="widgets" />
 						<param name="issubmenu" value="False" />
@@ -2340,13 +2574,13 @@
 						<content>
 							<include condition="False">skinshortcuts-submenu</include>
 						</content>
-						<content target="videos" limit="" sortby="" sortorder="">plugin://script.magic.skin.helper/?info=getsimilar&amp;type=movie&amp;tag=Movies</content>
+						<content target="videos" limit="" sortby="" sortorder="">special://skin/extras/playlists/NewMovies.xsp</content>
 						<content>
 							<include content="Object_Item" condition="Skin.HasSetting(EnableShowMore) + !False + false">
 								<label>$LOCALIZE[31061]...</label>
 								<label2>$LOCALIZE[31062]</label2>
 								<icon>common/nextitem.png</icon>
-								<onclick>ActivateWindow(videos,plugin://script.magic.skin.helper/?info=getsimilar&amp;type=movie&amp;tag=Movies,return)</onclick>
+								<onclick>ActivateWindow(videos,special://skin/extras/playlists/NewMovies.xsp,return)</onclick>
 								<visible>!Integer.IsLess(Container(30101).NumItems,)</visible>
 							</include>
 						</content>
@@ -2372,7 +2606,7 @@
 						<onclick condition="!false">ActivateWindow(Weather)</onclick>
 						<onfocus>ClearProperty(TMDbHelper.WidgetContainer,Home)</onfocus>
 						<onfocus>SetProperty(CG_50100_CurrentWidget,$NUMBER[30102],Home)</onfocus>
-						<onfocus condition="!Skin.HasSetting(DisableBlur) + !Skin.HasSetting(NoFanart)">SetProperty(TMDbHelper.Blur.SourceImage,landscape,Home)</onfocus>
+						<onfocus condition="!Skin.HasSetting(DisableBlur) + !Skin.HasSetting(NoFanart)">SetProperty(TMDbHelper.Blur.SourceImage,poster,Home)</onfocus>
 						<onfocus condition="!Skin.HasSetting(DisableBlur) + Skin.HasSetting(NoFanart)">SetProperty(TMDbHelper.Blur.SourceImage,Art(fallback),Home)</onfocus>
 						<onfocus>SetProperty(HW_50100_InfoWidget,30102,Home)</onfocus>
 						<onfocus>SetProperty(WidgetFocus,1)</onfocus>
@@ -2411,7 +2645,7 @@
 						<param name="groupid" value="40102" />
 						<param name="id" value="30102" />
 						<param name="label" value="$LOCALIZE[31210]" />
-						<param name="viewtype-include" value="Viewtype_Landscape" />
+						<param name="viewtype-include" value="Viewtype_Poster" />
 						<param name="widget-type" value="widgets" />
 						<param name="issubmenu" value="False" />
 						<param name="showonupdate" value="false" />
@@ -2428,7 +2662,7 @@
 						<onback>301</onback>
 						<onfocus condition="!False">SetProperty(TMDbHelper.WidgetContainer,$NUMBER[30102],Home)</onfocus>
 						<onfocus>SetProperty(CG_50100_CurrentWidget,$NUMBER[30102],Home)</onfocus>
-						<onfocus condition="!Skin.HasSetting(DisableBlur) + !Skin.HasSetting(NoFanart) + !False">SetProperty(TMDbHelper.Blur.SourceImage,landscape,Home)</onfocus>
+						<onfocus condition="!Skin.HasSetting(DisableBlur) + !Skin.HasSetting(NoFanart) + !False">SetProperty(TMDbHelper.Blur.SourceImage,poster,Home)</onfocus>
 						<onfocus condition="!Skin.HasSetting(DisableBlur) + Skin.HasSetting(NoFanart) + !False">SetProperty(TMDbHelper.Blur.SourceImage,Art(fallback),Home)</onfocus>
 						<onfocus>SetProperty(WidgetFocus,1)</onfocus>
 						<onfocus condition="![true + String.IsEqual(Container(3700).ListItemAbsolute(0).Property(list),Background)]">ClearProperty(PW_50100_InfoWidget,Home)</onfocus>
@@ -2436,7 +2670,7 @@
 						<include content="Defs_AutoScroll">
 							<param name="condition" value="[!ControlGroup(50100).HasFocus() + System.IdleTime(1) + !Skin.HasSetting(DisableAutoScrollWidgets) + Integer.IsEqual(Container(50100).NumItems,1)] | [false + !Control.HasFocus(30102) + !Skin.HasSetting(DisableAutoScrollWidgets)]" />
 						</include>
-						<include>Defs_Movement_Landscape</include>
+						<include>Defs_Movement_Poster</include>
 						<content>
 							<include condition="False">skinshortcuts-submenu</include>
 						</content>
@@ -2510,7 +2744,7 @@
 					<include content="Info_Widget_Poster" condition="true">
 						<param name="groupid" value="40103" />
 						<param name="id" value="30103" />
-						<param name="label" value="$LOCALIZE[590]" />
+						<param name="label" value="Movies you may like" />
 						<param name="viewtype-include" value="Viewtype_Poster" />
 						<param name="widget-type" value="widgets" />
 						<param name="issubmenu" value="False" />
@@ -2540,13 +2774,13 @@
 						<content>
 							<include condition="False">skinshortcuts-submenu</include>
 						</content>
-						<content target="videos" limit="" sortby="" sortorder="">special://skin/extras/playlists/RandomMovies.xsp</content>
+						<content target="videos" limit="" sortby="" sortorder="">plugin://script.magic.skin.helper/?info=getsimilar&amp;tag=Movies&amp;type=movie&amp;pos=4</content>
 						<content>
 							<include content="Object_Item" condition="Skin.HasSetting(EnableShowMore) + !False + false">
 								<label>$LOCALIZE[31061]...</label>
 								<label2>$LOCALIZE[31062]</label2>
 								<icon>common/nextitem.png</icon>
-								<onclick>ActivateWindow(videos,special://skin/extras/playlists/RandomMovies.xsp,return)</onclick>
+								<onclick>ActivateWindow(videos,plugin://script.magic.skin.helper/?info=getsimilar&amp;tag=Movies&amp;type=movie&amp;pos=4,return)</onclick>
 								<visible>!Integer.IsLess(Container(30103).NumItems,)</visible>
 							</include>
 						</content>
@@ -2561,6 +2795,506 @@
 						<height>470</height>
 						<right>100</right>
 						<visible>Integer.IsGreater(Container(30103).NumAllItems,0) | Container(30103).IsUpdating</visible>
+					</include>
+					<include content="Object_Control" condition="!true + !false">
+						<param name="type" value="button" />
+						<param name="id" value="30104" />
+						<description>Special Widget Control</description>
+						<include>Defs_Hidden_Button</include>
+						<onback>ClearProperty(CurrentWidget,Home)</onback>
+						<onback>301</onback>
+						<onclick condition="!false">ActivateWindow(Weather)</onclick>
+						<onfocus>ClearProperty(TMDbHelper.WidgetContainer,Home)</onfocus>
+						<onfocus>SetProperty(CG_50100_CurrentWidget,$NUMBER[30104],Home)</onfocus>
+						<onfocus condition="!Skin.HasSetting(DisableBlur) + !Skin.HasSetting(NoFanart)">SetProperty(TMDbHelper.Blur.SourceImage,poster,Home)</onfocus>
+						<onfocus condition="!Skin.HasSetting(DisableBlur) + Skin.HasSetting(NoFanart)">SetProperty(TMDbHelper.Blur.SourceImage,Art(fallback),Home)</onfocus>
+						<onfocus>SetProperty(HW_50100_InfoWidget,30104,Home)</onfocus>
+						<onfocus>SetProperty(WidgetFocus,1)</onfocus>
+						<onfocus condition="false + String.IsEmpty(Window(Home).Property(SpecialWidgetControl))">SetFocus(5200)</onfocus>
+						<onfocus condition="false + String.IsEqual(Window(Home).Property(SpecialWidgetControl),MoveUp)">Action(Up)</onfocus>
+						<onfocus condition="false + String.IsEqual(Window(Home).Property(SpecialWidgetControl),MoveDown)">Action(Down)</onfocus>
+						<onfocus condition="false + String.IsEqual(Window(Home).Property(SpecialWidgetControl),MoveLeft)">Action(Left)</onfocus>
+						<onfocus condition="false + String.IsEqual(Window(Home).Property(SpecialWidgetControl),MoveRight)">Action(Right)</onfocus>
+						<onfocus>ClearProperty(SpecialWidgetControl,Home)</onfocus>
+					</include>
+					<include content="Home_Widget_Fullscreen_HubInfo" condition="false + false">
+						<param name="group-id" value="35104" />
+						<param name="group2-id" value="75104" />
+						<param name="button-play-id" value="30104" />
+						<param name="group-play-id" value="45104" />
+						<param name="button-info-id" value="55104" />
+						<param name="group-info-id" value="65104" />
+						<param name="ondown" value="30105" />
+						<param name="onfocus" value="SetProperty(CG_50100_CurrentWidget,30104,Home)" />
+						<param name="onfocus2" value="SetProperty(HW_50100_InfoWidget,30104,Home)" />
+						<param name="onfocus3" value="SetProperty(PW_50100_InfoWidget,1,Home)" />
+						<param name="clearlogo-visible" value="[Integer.IsEqual(Window(Home).Property(HW_50100_InfoWidget),30104) + Skin.HasSetting(EnableHorizontalHome)]" />
+						<param name="group-visible" value="!Integer.IsEqual(Container(3001).NumItems,0)" />
+						<include>Animation_FadeInOut_Common</include>
+						<top>740</top>
+						<height>30</height>
+					</include>
+					<include content="Object_Control" condition="![False | False] + false + !False">
+						<param name="type" value="group" />
+						<param name="id" value="35104" />
+						<top>-20</top>
+						<height>0</height>
+						<visible>Integer.IsGreater(Container(30104).NumAllItems,0) | Container(30104).IsUpdating</visible>
+					</include>
+					<include content="Info_Widget_Poster" condition="true">
+						<param name="groupid" value="40104" />
+						<param name="id" value="30104" />
+						<param name="label" value="Because you watched $INFO[Container(30104).ListItem.Property(searchstring)]" />
+						<param name="viewtype-include" value="Viewtype_Poster" />
+						<param name="widget-type" value="widgets" />
+						<param name="issubmenu" value="False" />
+						<param name="showonupdate" value="false" />
+						<param name="label-widgetname" value="False" />
+						<param name="label-widgetstart" value="" />
+						<param name="label-widgetend" value="" />
+						<param name="infoslide" value="![False | False] + [False | false]" />
+						<param name="backpanel" value="![False | False] + [False | [false + String.IsEqual(Container(3700).ListItemAbsolute(0).Property(list),Background) + !Integer.IsEqual(Container(3001).NumItems,0)]] + [Control.HasFocus(30104) | Integer.IsEqual(Window(Home).Property(HW_50100_InfoWidget),30104)]" />
+						<param name="clearart" value="False | [false + String.IsEqual(Container(3700).ListItemAbsolute(0).Property(list),Background) + !Integer.IsEqual(Container(3001).NumItems,0)]" />
+						<param name="control-type" value="fixedlist" />
+						<top>widgets_item_top</top>
+						<onback>ClearProperty(CurrentWidget,Home)</onback>
+						<onback>SetFocus(30101)</onback>
+						<onback>301</onback>
+						<onfocus condition="!False">SetProperty(TMDbHelper.WidgetContainer,$NUMBER[30104],Home)</onfocus>
+						<onfocus>SetProperty(CG_50100_CurrentWidget,$NUMBER[30104],Home)</onfocus>
+						<onfocus condition="!Skin.HasSetting(DisableBlur) + !Skin.HasSetting(NoFanart) + !False">SetProperty(TMDbHelper.Blur.SourceImage,poster,Home)</onfocus>
+						<onfocus condition="!Skin.HasSetting(DisableBlur) + Skin.HasSetting(NoFanart) + !False">SetProperty(TMDbHelper.Blur.SourceImage,Art(fallback),Home)</onfocus>
+						<onfocus>SetProperty(WidgetFocus,1)</onfocus>
+						<onfocus condition="![false + String.IsEqual(Container(3700).ListItemAbsolute(0).Property(list),Background)]">ClearProperty(PW_50100_InfoWidget,Home)</onfocus>
+						<onfocus condition="!False">SetProperty(HW_50100_InfoWidget,30104,Home)</onfocus>
+						<include content="Defs_AutoScroll">
+							<param name="condition" value="[!ControlGroup(50100).HasFocus() + System.IdleTime(1) + !Skin.HasSetting(DisableAutoScrollWidgets) + Integer.IsEqual(Container(50100).NumItems,1)] | [false + !Control.HasFocus(30104) + !Skin.HasSetting(DisableAutoScrollWidgets)]" />
+						</include>
+						<include>Defs_Movement_Poster</include>
+						<content>
+							<include condition="False">skinshortcuts-submenu</include>
+						</content>
+						<content target="videos" limit="" sortby="" sortorder="">plugin://script.magic.skin.helper/?info=getsimilar&amp;tag=Movies&amp;type=movie</content>
+						<content>
+							<include content="Object_Item" condition="Skin.HasSetting(EnableShowMore) + !False + false">
+								<label>$LOCALIZE[31061]...</label>
+								<label2>$LOCALIZE[31062]</label2>
+								<icon>common/nextitem.png</icon>
+								<onclick>ActivateWindow(videos,plugin://script.magic.skin.helper/?info=getsimilar&amp;tag=Movies&amp;type=movie,return)</onclick>
+								<visible>!Integer.IsLess(Container(30104).NumItems,)</visible>
+							</include>
+						</content>
+					</include>
+					<include content="Home_Vertical_Info" condition="true + ![False | False] + False">
+						<param name="font" value="font_title" />
+						<param name="titleheight" value="60" />
+						<param name="groupid" value="60104" />
+						<param name="id" value="30104" />
+						<param name="visible" value="Control.HasFocus(30104) | Integer.IsEqual(Window(Home).Property(CG_50100_CurrentWidget),$NUMBER[30104])" />
+						<top>-60</top>
+						<height>470</height>
+						<right>100</right>
+						<visible>Integer.IsGreater(Container(30104).NumAllItems,0) | Container(30104).IsUpdating</visible>
+					</include>
+					<include content="Object_Control" condition="!true + !false">
+						<param name="type" value="button" />
+						<param name="id" value="30105" />
+						<description>Special Widget Control</description>
+						<include>Defs_Hidden_Button</include>
+						<onback>ClearProperty(CurrentWidget,Home)</onback>
+						<onback>301</onback>
+						<onclick condition="!false">ActivateWindow(Weather)</onclick>
+						<onfocus>ClearProperty(TMDbHelper.WidgetContainer,Home)</onfocus>
+						<onfocus>SetProperty(CG_50100_CurrentWidget,$NUMBER[30105],Home)</onfocus>
+						<onfocus condition="!Skin.HasSetting(DisableBlur) + !Skin.HasSetting(NoFanart)">SetProperty(TMDbHelper.Blur.SourceImage,poster,Home)</onfocus>
+						<onfocus condition="!Skin.HasSetting(DisableBlur) + Skin.HasSetting(NoFanart)">SetProperty(TMDbHelper.Blur.SourceImage,Art(fallback),Home)</onfocus>
+						<onfocus>SetProperty(HW_50100_InfoWidget,30105,Home)</onfocus>
+						<onfocus>SetProperty(WidgetFocus,1)</onfocus>
+						<onfocus condition="false + String.IsEmpty(Window(Home).Property(SpecialWidgetControl))">SetFocus(5200)</onfocus>
+						<onfocus condition="false + String.IsEqual(Window(Home).Property(SpecialWidgetControl),MoveUp)">Action(Up)</onfocus>
+						<onfocus condition="false + String.IsEqual(Window(Home).Property(SpecialWidgetControl),MoveDown)">Action(Down)</onfocus>
+						<onfocus condition="false + String.IsEqual(Window(Home).Property(SpecialWidgetControl),MoveLeft)">Action(Left)</onfocus>
+						<onfocus condition="false + String.IsEqual(Window(Home).Property(SpecialWidgetControl),MoveRight)">Action(Right)</onfocus>
+						<onfocus>ClearProperty(SpecialWidgetControl,Home)</onfocus>
+					</include>
+					<include content="Home_Widget_Fullscreen_HubInfo" condition="false + false">
+						<param name="group-id" value="35105" />
+						<param name="group2-id" value="75105" />
+						<param name="button-play-id" value="30105" />
+						<param name="group-play-id" value="45105" />
+						<param name="button-info-id" value="55105" />
+						<param name="group-info-id" value="65105" />
+						<param name="ondown" value="30106" />
+						<param name="onfocus" value="SetProperty(CG_50100_CurrentWidget,30105,Home)" />
+						<param name="onfocus2" value="SetProperty(HW_50100_InfoWidget,30105,Home)" />
+						<param name="onfocus3" value="SetProperty(PW_50100_InfoWidget,1,Home)" />
+						<param name="clearlogo-visible" value="[Integer.IsEqual(Window(Home).Property(HW_50100_InfoWidget),30105) + Skin.HasSetting(EnableHorizontalHome)]" />
+						<param name="group-visible" value="!Integer.IsEqual(Container(3001).NumItems,0)" />
+						<include>Animation_FadeInOut_Common</include>
+						<top>740</top>
+						<height>30</height>
+					</include>
+					<include content="Object_Control" condition="![False | False] + false + !False">
+						<param name="type" value="group" />
+						<param name="id" value="35105" />
+						<top>-20</top>
+						<height>0</height>
+						<visible>Integer.IsGreater(Container(30105).NumAllItems,0) | Container(30105).IsUpdating</visible>
+					</include>
+					<include content="Info_Widget_Poster" condition="true">
+						<param name="groupid" value="40105" />
+						<param name="id" value="30105" />
+						<param name="label" value="Top 250 Movies" />
+						<param name="viewtype-include" value="Viewtype_Poster" />
+						<param name="widget-type" value="widgets" />
+						<param name="issubmenu" value="False" />
+						<param name="showonupdate" value="false" />
+						<param name="label-widgetname" value="False" />
+						<param name="label-widgetstart" value="" />
+						<param name="label-widgetend" value="" />
+						<param name="infoslide" value="![False | False] + [False | false]" />
+						<param name="backpanel" value="![False | False] + [False | [false + String.IsEqual(Container(3700).ListItemAbsolute(0).Property(list),Background) + !Integer.IsEqual(Container(3001).NumItems,0)]] + [Control.HasFocus(30105) | Integer.IsEqual(Window(Home).Property(HW_50100_InfoWidget),30105)]" />
+						<param name="clearart" value="False | [false + String.IsEqual(Container(3700).ListItemAbsolute(0).Property(list),Background) + !Integer.IsEqual(Container(3001).NumItems,0)]" />
+						<param name="control-type" value="fixedlist" />
+						<top>widgets_item_top</top>
+						<onback>ClearProperty(CurrentWidget,Home)</onback>
+						<onback>SetFocus(30101)</onback>
+						<onback>301</onback>
+						<onfocus condition="!False">SetProperty(TMDbHelper.WidgetContainer,$NUMBER[30105],Home)</onfocus>
+						<onfocus>SetProperty(CG_50100_CurrentWidget,$NUMBER[30105],Home)</onfocus>
+						<onfocus condition="!Skin.HasSetting(DisableBlur) + !Skin.HasSetting(NoFanart) + !False">SetProperty(TMDbHelper.Blur.SourceImage,poster,Home)</onfocus>
+						<onfocus condition="!Skin.HasSetting(DisableBlur) + Skin.HasSetting(NoFanart) + !False">SetProperty(TMDbHelper.Blur.SourceImage,Art(fallback),Home)</onfocus>
+						<onfocus>SetProperty(WidgetFocus,1)</onfocus>
+						<onfocus condition="![false + String.IsEqual(Container(3700).ListItemAbsolute(0).Property(list),Background)]">ClearProperty(PW_50100_InfoWidget,Home)</onfocus>
+						<onfocus condition="!False">SetProperty(HW_50100_InfoWidget,30105,Home)</onfocus>
+						<include content="Defs_AutoScroll">
+							<param name="condition" value="[!ControlGroup(50100).HasFocus() + System.IdleTime(1) + !Skin.HasSetting(DisableAutoScrollWidgets) + Integer.IsEqual(Container(50100).NumItems,1)] | [false + !Control.HasFocus(30105) + !Skin.HasSetting(DisableAutoScrollWidgets)]" />
+						</include>
+						<include>Defs_Movement_Poster</include>
+						<content>
+							<include condition="False">skinshortcuts-submenu</include>
+						</content>
+						<content target="videos" limit="" sortby="" sortorder="">special://skin/extras/playlists/Top250Movies.xsp</content>
+						<content>
+							<include content="Object_Item" condition="Skin.HasSetting(EnableShowMore) + !False + false">
+								<label>$LOCALIZE[31061]...</label>
+								<label2>$LOCALIZE[31062]</label2>
+								<icon>common/nextitem.png</icon>
+								<onclick>ActivateWindow(videos,special://skin/extras/playlists/Top250Movies.xsp,return)</onclick>
+								<visible>!Integer.IsLess(Container(30105).NumItems,)</visible>
+							</include>
+						</content>
+					</include>
+					<include content="Home_Vertical_Info" condition="true + ![False | False] + False">
+						<param name="font" value="font_title" />
+						<param name="titleheight" value="60" />
+						<param name="groupid" value="60105" />
+						<param name="id" value="30105" />
+						<param name="visible" value="Control.HasFocus(30105) | Integer.IsEqual(Window(Home).Property(CG_50100_CurrentWidget),$NUMBER[30105])" />
+						<top>-60</top>
+						<height>470</height>
+						<right>100</right>
+						<visible>Integer.IsGreater(Container(30105).NumAllItems,0) | Container(30105).IsUpdating</visible>
+					</include>
+					<include content="Object_Control" condition="!true + !false">
+						<param name="type" value="button" />
+						<param name="id" value="30106" />
+						<description>Special Widget Control</description>
+						<include>Defs_Hidden_Button</include>
+						<onback>ClearProperty(CurrentWidget,Home)</onback>
+						<onback>301</onback>
+						<onclick condition="!false">ActivateWindow(Weather)</onclick>
+						<onfocus>ClearProperty(TMDbHelper.WidgetContainer,Home)</onfocus>
+						<onfocus>SetProperty(CG_50100_CurrentWidget,$NUMBER[30106],Home)</onfocus>
+						<onfocus condition="!Skin.HasSetting(DisableBlur) + !Skin.HasSetting(NoFanart)">SetProperty(TMDbHelper.Blur.SourceImage,poster,Home)</onfocus>
+						<onfocus condition="!Skin.HasSetting(DisableBlur) + Skin.HasSetting(NoFanart)">SetProperty(TMDbHelper.Blur.SourceImage,Art(fallback),Home)</onfocus>
+						<onfocus>SetProperty(HW_50100_InfoWidget,30106,Home)</onfocus>
+						<onfocus>SetProperty(WidgetFocus,1)</onfocus>
+						<onfocus condition="false + String.IsEmpty(Window(Home).Property(SpecialWidgetControl))">SetFocus(5200)</onfocus>
+						<onfocus condition="false + String.IsEqual(Window(Home).Property(SpecialWidgetControl),MoveUp)">Action(Up)</onfocus>
+						<onfocus condition="false + String.IsEqual(Window(Home).Property(SpecialWidgetControl),MoveDown)">Action(Down)</onfocus>
+						<onfocus condition="false + String.IsEqual(Window(Home).Property(SpecialWidgetControl),MoveLeft)">Action(Left)</onfocus>
+						<onfocus condition="false + String.IsEqual(Window(Home).Property(SpecialWidgetControl),MoveRight)">Action(Right)</onfocus>
+						<onfocus>ClearProperty(SpecialWidgetControl,Home)</onfocus>
+					</include>
+					<include content="Home_Widget_Fullscreen_HubInfo" condition="false + false">
+						<param name="group-id" value="35106" />
+						<param name="group2-id" value="75106" />
+						<param name="button-play-id" value="30106" />
+						<param name="group-play-id" value="45106" />
+						<param name="button-info-id" value="55106" />
+						<param name="group-info-id" value="65106" />
+						<param name="ondown" value="30107" />
+						<param name="onfocus" value="SetProperty(CG_50100_CurrentWidget,30106,Home)" />
+						<param name="onfocus2" value="SetProperty(HW_50100_InfoWidget,30106,Home)" />
+						<param name="onfocus3" value="SetProperty(PW_50100_InfoWidget,1,Home)" />
+						<param name="clearlogo-visible" value="[Integer.IsEqual(Window(Home).Property(HW_50100_InfoWidget),30106) + Skin.HasSetting(EnableHorizontalHome)]" />
+						<param name="group-visible" value="!Integer.IsEqual(Container(3001).NumItems,0)" />
+						<include>Animation_FadeInOut_Common</include>
+						<top>740</top>
+						<height>30</height>
+					</include>
+					<include content="Object_Control" condition="![False | False] + false + !False">
+						<param name="type" value="group" />
+						<param name="id" value="35106" />
+						<top>-20</top>
+						<height>0</height>
+						<visible>Integer.IsGreater(Container(30106).NumAllItems,0) | Container(30106).IsUpdating</visible>
+					</include>
+					<include content="Info_Widget_Poster" condition="true">
+						<param name="groupid" value="40106" />
+						<param name="id" value="30106" />
+						<param name="label" value="Because you watched $INFO[Container(30106).ListItem.Property(searchstring)]" />
+						<param name="viewtype-include" value="Viewtype_Poster" />
+						<param name="widget-type" value="widgets" />
+						<param name="issubmenu" value="False" />
+						<param name="showonupdate" value="false" />
+						<param name="label-widgetname" value="False" />
+						<param name="label-widgetstart" value="" />
+						<param name="label-widgetend" value="" />
+						<param name="infoslide" value="![False | False] + [False | false]" />
+						<param name="backpanel" value="![False | False] + [False | [false + String.IsEqual(Container(3700).ListItemAbsolute(0).Property(list),Background) + !Integer.IsEqual(Container(3001).NumItems,0)]] + [Control.HasFocus(30106) | Integer.IsEqual(Window(Home).Property(HW_50100_InfoWidget),30106)]" />
+						<param name="clearart" value="False | [false + String.IsEqual(Container(3700).ListItemAbsolute(0).Property(list),Background) + !Integer.IsEqual(Container(3001).NumItems,0)]" />
+						<param name="control-type" value="fixedlist" />
+						<top>widgets_item_top</top>
+						<onback>ClearProperty(CurrentWidget,Home)</onback>
+						<onback>SetFocus(30101)</onback>
+						<onback>301</onback>
+						<onfocus condition="!False">SetProperty(TMDbHelper.WidgetContainer,$NUMBER[30106],Home)</onfocus>
+						<onfocus>SetProperty(CG_50100_CurrentWidget,$NUMBER[30106],Home)</onfocus>
+						<onfocus condition="!Skin.HasSetting(DisableBlur) + !Skin.HasSetting(NoFanart) + !False">SetProperty(TMDbHelper.Blur.SourceImage,poster,Home)</onfocus>
+						<onfocus condition="!Skin.HasSetting(DisableBlur) + Skin.HasSetting(NoFanart) + !False">SetProperty(TMDbHelper.Blur.SourceImage,Art(fallback),Home)</onfocus>
+						<onfocus>SetProperty(WidgetFocus,1)</onfocus>
+						<onfocus condition="![false + String.IsEqual(Container(3700).ListItemAbsolute(0).Property(list),Background)]">ClearProperty(PW_50100_InfoWidget,Home)</onfocus>
+						<onfocus condition="!False">SetProperty(HW_50100_InfoWidget,30106,Home)</onfocus>
+						<include content="Defs_AutoScroll">
+							<param name="condition" value="[!ControlGroup(50100).HasFocus() + System.IdleTime(1) + !Skin.HasSetting(DisableAutoScrollWidgets) + Integer.IsEqual(Container(50100).NumItems,1)] | [false + !Control.HasFocus(30106) + !Skin.HasSetting(DisableAutoScrollWidgets)]" />
+						</include>
+						<include>Defs_Movement_Poster</include>
+						<content>
+							<include condition="False">skinshortcuts-submenu</include>
+						</content>
+						<content target="videos" limit="" sortby="" sortorder="">plugin://script.magic.skin.helper/?info=getsimilar&amp;tag=Movies&amp;type=movie&amp;pos=0</content>
+						<content>
+							<include content="Object_Item" condition="Skin.HasSetting(EnableShowMore) + !False + false">
+								<label>$LOCALIZE[31061]...</label>
+								<label2>$LOCALIZE[31062]</label2>
+								<icon>common/nextitem.png</icon>
+								<onclick>ActivateWindow(videos,plugin://script.magic.skin.helper/?info=getsimilar&amp;tag=Movies&amp;type=movie&amp;pos=0,return)</onclick>
+								<visible>!Integer.IsLess(Container(30106).NumItems,)</visible>
+							</include>
+						</content>
+					</include>
+					<include content="Home_Vertical_Info" condition="true + ![False | False] + False">
+						<param name="font" value="font_title" />
+						<param name="titleheight" value="60" />
+						<param name="groupid" value="60106" />
+						<param name="id" value="30106" />
+						<param name="visible" value="Control.HasFocus(30106) | Integer.IsEqual(Window(Home).Property(CG_50100_CurrentWidget),$NUMBER[30106])" />
+						<top>-60</top>
+						<height>470</height>
+						<right>100</right>
+						<visible>Integer.IsGreater(Container(30106).NumAllItems,0) | Container(30106).IsUpdating</visible>
+					</include>
+					<include content="Object_Control" condition="!true + !false">
+						<param name="type" value="button" />
+						<param name="id" value="30107" />
+						<description>Special Widget Control</description>
+						<include>Defs_Hidden_Button</include>
+						<onback>ClearProperty(CurrentWidget,Home)</onback>
+						<onback>301</onback>
+						<onclick condition="!false">ActivateWindow(Weather)</onclick>
+						<onfocus>ClearProperty(TMDbHelper.WidgetContainer,Home)</onfocus>
+						<onfocus>SetProperty(CG_50100_CurrentWidget,$NUMBER[30107],Home)</onfocus>
+						<onfocus condition="!Skin.HasSetting(DisableBlur) + !Skin.HasSetting(NoFanart)">SetProperty(TMDbHelper.Blur.SourceImage,poster,Home)</onfocus>
+						<onfocus condition="!Skin.HasSetting(DisableBlur) + Skin.HasSetting(NoFanart)">SetProperty(TMDbHelper.Blur.SourceImage,Art(fallback),Home)</onfocus>
+						<onfocus>SetProperty(HW_50100_InfoWidget,30107,Home)</onfocus>
+						<onfocus>SetProperty(WidgetFocus,1)</onfocus>
+						<onfocus condition="false + String.IsEmpty(Window(Home).Property(SpecialWidgetControl))">SetFocus(5200)</onfocus>
+						<onfocus condition="false + String.IsEqual(Window(Home).Property(SpecialWidgetControl),MoveUp)">Action(Up)</onfocus>
+						<onfocus condition="false + String.IsEqual(Window(Home).Property(SpecialWidgetControl),MoveDown)">Action(Down)</onfocus>
+						<onfocus condition="false + String.IsEqual(Window(Home).Property(SpecialWidgetControl),MoveLeft)">Action(Left)</onfocus>
+						<onfocus condition="false + String.IsEqual(Window(Home).Property(SpecialWidgetControl),MoveRight)">Action(Right)</onfocus>
+						<onfocus>ClearProperty(SpecialWidgetControl,Home)</onfocus>
+					</include>
+					<include content="Home_Widget_Fullscreen_HubInfo" condition="false + false">
+						<param name="group-id" value="35107" />
+						<param name="group2-id" value="75107" />
+						<param name="button-play-id" value="30107" />
+						<param name="group-play-id" value="45107" />
+						<param name="button-info-id" value="55107" />
+						<param name="group-info-id" value="65107" />
+						<param name="ondown" value="30108" />
+						<param name="onfocus" value="SetProperty(CG_50100_CurrentWidget,30107,Home)" />
+						<param name="onfocus2" value="SetProperty(HW_50100_InfoWidget,30107,Home)" />
+						<param name="onfocus3" value="SetProperty(PW_50100_InfoWidget,1,Home)" />
+						<param name="clearlogo-visible" value="[Integer.IsEqual(Window(Home).Property(HW_50100_InfoWidget),30107) + Skin.HasSetting(EnableHorizontalHome)]" />
+						<param name="group-visible" value="!Integer.IsEqual(Container(3001).NumItems,0)" />
+						<include>Animation_FadeInOut_Common</include>
+						<top>740</top>
+						<height>30</height>
+					</include>
+					<include content="Object_Control" condition="![False | False] + false + !False">
+						<param name="type" value="group" />
+						<param name="id" value="35107" />
+						<top>-20</top>
+						<height>0</height>
+						<visible>Integer.IsGreater(Container(30107).NumAllItems,0) | Container(30107).IsUpdating</visible>
+					</include>
+					<include content="Info_Widget_Poster" condition="true">
+						<param name="groupid" value="40107" />
+						<param name="id" value="30107" />
+						<param name="label" value="Suggestions by Genre $INFO[Container(30107).ListItem.Property(searchstring),',']" />
+						<param name="viewtype-include" value="Viewtype_Poster" />
+						<param name="widget-type" value="widgets" />
+						<param name="issubmenu" value="False" />
+						<param name="showonupdate" value="false" />
+						<param name="label-widgetname" value="False" />
+						<param name="label-widgetstart" value="" />
+						<param name="label-widgetend" value="" />
+						<param name="infoslide" value="![False | False] + [False | false]" />
+						<param name="backpanel" value="![False | False] + [False | [false + String.IsEqual(Container(3700).ListItemAbsolute(0).Property(list),Background) + !Integer.IsEqual(Container(3001).NumItems,0)]] + [Control.HasFocus(30107) | Integer.IsEqual(Window(Home).Property(HW_50100_InfoWidget),30107)]" />
+						<param name="clearart" value="False | [false + String.IsEqual(Container(3700).ListItemAbsolute(0).Property(list),Background) + !Integer.IsEqual(Container(3001).NumItems,0)]" />
+						<param name="control-type" value="fixedlist" />
+						<top>widgets_item_top</top>
+						<onback>ClearProperty(CurrentWidget,Home)</onback>
+						<onback>SetFocus(30101)</onback>
+						<onback>301</onback>
+						<onfocus condition="!False">SetProperty(TMDbHelper.WidgetContainer,$NUMBER[30107],Home)</onfocus>
+						<onfocus>SetProperty(CG_50100_CurrentWidget,$NUMBER[30107],Home)</onfocus>
+						<onfocus condition="!Skin.HasSetting(DisableBlur) + !Skin.HasSetting(NoFanart) + !False">SetProperty(TMDbHelper.Blur.SourceImage,poster,Home)</onfocus>
+						<onfocus condition="!Skin.HasSetting(DisableBlur) + Skin.HasSetting(NoFanart) + !False">SetProperty(TMDbHelper.Blur.SourceImage,Art(fallback),Home)</onfocus>
+						<onfocus>SetProperty(WidgetFocus,1)</onfocus>
+						<onfocus condition="![false + String.IsEqual(Container(3700).ListItemAbsolute(0).Property(list),Background)]">ClearProperty(PW_50100_InfoWidget,Home)</onfocus>
+						<onfocus condition="!False">SetProperty(HW_50100_InfoWidget,30107,Home)</onfocus>
+						<include content="Defs_AutoScroll">
+							<param name="condition" value="[!ControlGroup(50100).HasFocus() + System.IdleTime(1) + !Skin.HasSetting(DisableAutoScrollWidgets) + Integer.IsEqual(Container(50100).NumItems,1)] | [false + !Control.HasFocus(30107) + !Skin.HasSetting(DisableAutoScrollWidgets)]" />
+						</include>
+						<include>Defs_Movement_Poster</include>
+						<content>
+							<include condition="False">skinshortcuts-submenu</include>
+						</content>
+						<content target="videos" limit="" sortby="" sortorder="">plugin://script.magic.skin.helper/?info=getbygenre&amp;tag=Movies&amp;type=movie</content>
+						<content>
+							<include content="Object_Item" condition="Skin.HasSetting(EnableShowMore) + !False + false">
+								<label>$LOCALIZE[31061]...</label>
+								<label2>$LOCALIZE[31062]</label2>
+								<icon>common/nextitem.png</icon>
+								<onclick>ActivateWindow(videos,plugin://script.magic.skin.helper/?info=getbygenre&amp;tag=Movies&amp;type=movie,return)</onclick>
+								<visible>!Integer.IsLess(Container(30107).NumItems,)</visible>
+							</include>
+						</content>
+					</include>
+					<include content="Home_Vertical_Info" condition="true + ![False | False] + False">
+						<param name="font" value="font_title" />
+						<param name="titleheight" value="60" />
+						<param name="groupid" value="60107" />
+						<param name="id" value="30107" />
+						<param name="visible" value="Control.HasFocus(30107) | Integer.IsEqual(Window(Home).Property(CG_50100_CurrentWidget),$NUMBER[30107])" />
+						<top>-60</top>
+						<height>470</height>
+						<right>100</right>
+						<visible>Integer.IsGreater(Container(30107).NumAllItems,0) | Container(30107).IsUpdating</visible>
+					</include>
+					<include content="Object_Control" condition="!true + !false">
+						<param name="type" value="button" />
+						<param name="id" value="30108" />
+						<description>Special Widget Control</description>
+						<include>Defs_Hidden_Button</include>
+						<onback>ClearProperty(CurrentWidget,Home)</onback>
+						<onback>301</onback>
+						<onclick condition="!false">ActivateWindow(Weather)</onclick>
+						<onfocus>ClearProperty(TMDbHelper.WidgetContainer,Home)</onfocus>
+						<onfocus>SetProperty(CG_50100_CurrentWidget,$NUMBER[30108],Home)</onfocus>
+						<onfocus condition="!Skin.HasSetting(DisableBlur) + !Skin.HasSetting(NoFanart)">SetProperty(TMDbHelper.Blur.SourceImage,poster,Home)</onfocus>
+						<onfocus condition="!Skin.HasSetting(DisableBlur) + Skin.HasSetting(NoFanart)">SetProperty(TMDbHelper.Blur.SourceImage,Art(fallback),Home)</onfocus>
+						<onfocus>SetProperty(HW_50100_InfoWidget,30108,Home)</onfocus>
+						<onfocus>SetProperty(WidgetFocus,1)</onfocus>
+						<onfocus condition="false + String.IsEmpty(Window(Home).Property(SpecialWidgetControl))">SetFocus(5200)</onfocus>
+						<onfocus condition="false + String.IsEqual(Window(Home).Property(SpecialWidgetControl),MoveUp)">Action(Up)</onfocus>
+						<onfocus condition="false + String.IsEqual(Window(Home).Property(SpecialWidgetControl),MoveDown)">Action(Down)</onfocus>
+						<onfocus condition="false + String.IsEqual(Window(Home).Property(SpecialWidgetControl),MoveLeft)">Action(Left)</onfocus>
+						<onfocus condition="false + String.IsEqual(Window(Home).Property(SpecialWidgetControl),MoveRight)">Action(Right)</onfocus>
+						<onfocus>ClearProperty(SpecialWidgetControl,Home)</onfocus>
+					</include>
+					<include content="Home_Widget_Fullscreen_HubInfo" condition="false + false">
+						<param name="group-id" value="35108" />
+						<param name="group2-id" value="75108" />
+						<param name="button-play-id" value="30108" />
+						<param name="group-play-id" value="45108" />
+						<param name="button-info-id" value="55108" />
+						<param name="group-info-id" value="65108" />
+						<param name="ondown" value="30109" />
+						<param name="onfocus" value="SetProperty(CG_50100_CurrentWidget,30108,Home)" />
+						<param name="onfocus2" value="SetProperty(HW_50100_InfoWidget,30108,Home)" />
+						<param name="onfocus3" value="SetProperty(PW_50100_InfoWidget,1,Home)" />
+						<param name="clearlogo-visible" value="[Integer.IsEqual(Window(Home).Property(HW_50100_InfoWidget),30108) + Skin.HasSetting(EnableHorizontalHome)]" />
+						<param name="group-visible" value="!Integer.IsEqual(Container(3001).NumItems,0)" />
+						<include>Animation_FadeInOut_Common</include>
+						<top>740</top>
+						<height>30</height>
+					</include>
+					<include content="Object_Control" condition="![False | False] + false + !False">
+						<param name="type" value="group" />
+						<param name="id" value="35108" />
+						<top>-20</top>
+						<height>0</height>
+						<visible>Integer.IsGreater(Container(30108).NumAllItems,0) | Container(30108).IsUpdating</visible>
+					</include>
+					<include content="Info_Widget_Poster" condition="true">
+						<param name="groupid" value="40108" />
+						<param name="id" value="30108" />
+						<param name="label" value="$LOCALIZE[31257]" />
+						<param name="viewtype-include" value="Viewtype_Poster" />
+						<param name="widget-type" value="widgets" />
+						<param name="issubmenu" value="False" />
+						<param name="showonupdate" value="false" />
+						<param name="label-widgetname" value="False" />
+						<param name="label-widgetstart" value="" />
+						<param name="label-widgetend" value="" />
+						<param name="infoslide" value="![False | False] + [False | false]" />
+						<param name="backpanel" value="![False | False] + [False | [false + String.IsEqual(Container(3700).ListItemAbsolute(0).Property(list),Background) + !Integer.IsEqual(Container(3001).NumItems,0)]] + [Control.HasFocus(30108) | Integer.IsEqual(Window(Home).Property(HW_50100_InfoWidget),30108)]" />
+						<param name="clearart" value="False | [false + String.IsEqual(Container(3700).ListItemAbsolute(0).Property(list),Background) + !Integer.IsEqual(Container(3001).NumItems,0)]" />
+						<param name="control-type" value="fixedlist" />
+						<top>widgets_item_top</top>
+						<onback>ClearProperty(CurrentWidget,Home)</onback>
+						<onback>SetFocus(30101)</onback>
+						<onback>301</onback>
+						<onfocus condition="!False">SetProperty(TMDbHelper.WidgetContainer,$NUMBER[30108],Home)</onfocus>
+						<onfocus>SetProperty(CG_50100_CurrentWidget,$NUMBER[30108],Home)</onfocus>
+						<onfocus condition="!Skin.HasSetting(DisableBlur) + !Skin.HasSetting(NoFanart) + !False">SetProperty(TMDbHelper.Blur.SourceImage,poster,Home)</onfocus>
+						<onfocus condition="!Skin.HasSetting(DisableBlur) + Skin.HasSetting(NoFanart) + !False">SetProperty(TMDbHelper.Blur.SourceImage,Art(fallback),Home)</onfocus>
+						<onfocus>SetProperty(WidgetFocus,1)</onfocus>
+						<onfocus condition="![false + String.IsEqual(Container(3700).ListItemAbsolute(0).Property(list),Background)]">ClearProperty(PW_50100_InfoWidget,Home)</onfocus>
+						<onfocus condition="!False">SetProperty(HW_50100_InfoWidget,30108,Home)</onfocus>
+						<include content="Defs_AutoScroll">
+							<param name="condition" value="[!ControlGroup(50100).HasFocus() + System.IdleTime(1) + !Skin.HasSetting(DisableAutoScrollWidgets) + Integer.IsEqual(Container(50100).NumItems,1)] | [false + !Control.HasFocus(30108) + !Skin.HasSetting(DisableAutoScrollWidgets)]" />
+						</include>
+						<include>Defs_Movement_Poster</include>
+						<content>
+							<include condition="False">skinshortcuts-submenu</include>
+						</content>
+						<content target="videos" limit="" sortby="" sortorder="">library://video/movies/genres.xml</content>
+						<content>
+							<include content="Object_Item" condition="Skin.HasSetting(EnableShowMore) + !False + false">
+								<label>$LOCALIZE[31061]...</label>
+								<label2>$LOCALIZE[31062]</label2>
+								<icon>common/nextitem.png</icon>
+								<onclick>ActivateWindow(videos,library://video/movies/genres.xml,return)</onclick>
+								<visible>!Integer.IsLess(Container(30108).NumItems,)</visible>
+							</include>
+						</content>
+					</include>
+					<include content="Home_Vertical_Info" condition="true + ![False | False] + False">
+						<param name="font" value="font_title" />
+						<param name="titleheight" value="60" />
+						<param name="groupid" value="60108" />
+						<param name="id" value="30108" />
+						<param name="visible" value="Control.HasFocus(30108) | Integer.IsEqual(Window(Home).Property(CG_50100_CurrentWidget),$NUMBER[30108])" />
+						<top>-60</top>
+						<height>470</height>
+						<right>100</right>
+						<visible>Integer.IsGreater(Container(30108).NumAllItems,0) | Container(30108).IsUpdating</visible>
 					</include>
 					<control type="group" id="30198">
 						<height>widgets_bumper_bottom</height>

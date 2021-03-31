@@ -1,5 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
+    <include name="Animation_FocusBounce">
+        <animation type="Focus" condition="!Skin.HasSetting(BounceAnimations)" reversible="false">
+            <effect type="zoom" end="110" time="75" tween="sine" easing="out" center="auto" />
+            <effect type="zoom" end="90.9090909" time="225" tween="sine" delay="100" easing="out" center="auto" />
+        </animation>
+    </include>
+
+    <include name="Animation_FocusBounce_Small">
+        <animation type="Focus" condition="!Skin.HasSetting(BounceAnimations)" reversible="false">
+            <effect type="zoom" end="105" time="75" tween="sine" easing="out" center="auto" />
+            <effect type="zoom" end="95.2380952" time="225" tween="sine" delay="100" easing="out" center="auto" />
+        </animation>
+    </include>
+
+    <include name="Animation_FocusBounce_Large">
+        <animation type="Focus" condition="!Skin.HasSetting(BounceAnimations)" reversible="false">
+            <effect type="zoom" end="115" time="75" tween="sine" easing="out" center="auto" />
+            <effect type="zoom" end="86.9565217" time="225" tween="sine" delay="100" easing="out" center="auto" />
+        </animation>
+    </include>
+
+    <include name="Animation_FocusBounce_Viewlayout">
+        <animation type="Focus" reversible="false">
+            <effect type="zoom" end="135" time="100" tween="sine" easing="out" center="auto" />
+            <effect type="zoom" end="92" time="225" tween="sine" delay="100" easing="out" center="auto" />
+        </animation>
+    </include>
+
     <include name="Animation_Home_Slide">
         <animation effect="slide" end="160" time="300" tween="quadratic" condition="Control.HasFocus(301) | Control.HasFocus(303) | [Control.HasFocus(3992) + String.IsEmpty(Window.Property(WidgetFocus))] | [Skin.HasSetting(LockMainMenu) + !$EXP[Exp_InfoVisible]]">Conditional</animation>
         <animation effect="slide" start="0" end="-160" time="300" tween="quadratic" condition="Control.HasFocus(301) | Control.HasFocus(303) | [Control.HasFocus(3992) + String.IsEmpty(Window.Property(WidgetFocus))] | Skin.HasSetting(LockMainMenu)">WindowClose</animation>
