@@ -437,7 +437,7 @@ msgstr ""
 
 #: /1080i/Custom_1116_Wizard.xml
 msgctxt "#31085"
-msgid "Enable these options for the full Arctic Horizon experience.[CR][CR][B]~ Note ~[/B][CR]Other than the colour scheme options$COMMA some of these settings might have a slight impact on the performance of the skin. This wizard can be run again as needed from \"Skin Settings > Lists and Other > Skin Setup Wizard\""
+msgid "Enable these options for the full Magic experience.[CR][CR][B]~ Note ~[/B][CR]Other than the colour scheme options$COMMA some of these settings might have a slight impact on the performance of the skin. This wizard can be run again as needed from \"Skin Settings > Lists and Other > Skin Setup Wizard\""
 msgstr ""
 
 #: /1080i/SkinSettings.xml

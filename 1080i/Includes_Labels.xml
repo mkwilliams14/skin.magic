@@ -168,7 +168,7 @@
 
         <value condition="[!String.IsEmpty(ListItem.ChannelNumberLabel) | Window.IsVisible(DialogPVRInfo.xml)] + Control.HasFocus(9400) + [!String.IsEmpty(ListItem.ChannelName) | !String.IsEmpty(ListITem.StartTime)]">$INFO[ListItem.ChannelName,  |  [COLOR=main_fg_100],[/COLOR]]$VAR[Label_PVR_EpisodeName,  |  [COLOR=main_fg_100],[/COLOR]]$VAR[Label_PVR_EPGEventTitle,  |  [COLOR=main_fg_100],[/COLOR]]$INFO[ListItem.NextStartTime,  |  [COLOR=main_fg_100],[/COLOR]]$INFO[ListItem.NextEndTime,[COLOR=main_fg_100] - ,[/COLOR]]</value>
 
-        <value condition="String.IsEmpty(ListItem.DBType) + String.IsEmpty(ListItem.ChannelNumberLabel) + String.IsEmpty(ListItem.ChannelName) + String.IsEmpty(ListItem.Title) + String.IsEmpty(ListItem.TVShowTitle) + String.IsEmpty(ListItem.AddonVersion)">$INFO[System.FriendlyName,  |  [COLOR=main_fg_100],[/COLOR]]  |  [COLOR=main_fg_100]Arctic Horizon $INFO[System.AddonVersion(skin.arctic.horizon)][/COLOR]</value>
+        <value condition="String.IsEmpty(ListItem.DBType) + String.IsEmpty(ListItem.ChannelNumberLabel) + String.IsEmpty(ListItem.ChannelName) + String.IsEmpty(ListItem.Title) + String.IsEmpty(ListItem.TVShowTitle) + String.IsEmpty(ListItem.AddonVersion)">$INFO[System.FriendlyName,  |  [COLOR=main_fg_100],[/COLOR]]  |  [COLOR=main_fg_100]Magic Skin $INFO[System.AddonVersion(skin.magic)][/COLOR]</value>
 
         <value>  |  [COLOR=main_fg_100]$LOCALIZE[19055][/COLOR]</value>
     </variable>
