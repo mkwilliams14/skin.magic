@@ -4,8 +4,7 @@
     <defaultcontrol always="true">50</defaultcontrol>
     <menucontrol>9000</menucontrol>
     <include>ViewIDs</include>
-    <!-- <onload>RunScript(plugin.video.themoviedb.helper,kodi_setting=myvideos.selectaction,property=SelectAction)</onload> -->
-    <!-- <onunload>ClearProperty(SelectAction,Home)</onunload> -->
+    <onload condition="System.HasAddon(script.magic.info.service)">RunScript(script.magic.info.service)</onload>
     <onunload>ClearProperty(WallMode)</onunload>
     <controls>
         <include>Viewtypes</include>
