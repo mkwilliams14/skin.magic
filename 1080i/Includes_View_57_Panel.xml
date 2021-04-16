@@ -58,8 +58,8 @@
                 <aligny>top</aligny>
                 <visible>$PARAM[visible]</visible>
                 <onright condition="Control.IsVisible(60)">60</onright>
-                <onright condition="!Control.IsVisible(60)">300</onright>
-                <onleft>300</onleft>
+                <onright condition="!Control.IsVisible(60)">SetFocus(9000)</onright>
+                <onleft>SetFocus(9000)</onleft>
                 <viewtype label="$PARAM[viewtype]">icon</viewtype>
                 <itemlayout width="$PARAM[itemwidth]" height="$PARAM[itemheight]">
                     <control type="group">

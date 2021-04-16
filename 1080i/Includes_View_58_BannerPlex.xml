@@ -56,7 +56,9 @@
                 <scrolltime tween="cubic">300</scrolltime>
                 <focusposition>2</focusposition>
                 <preloaditems>2</preloaditems>
-                <include>View_Vertical_Movement</include>
+                <onright condition="Control.IsVisible(60)">60</onright>
+                <onright condition="!Control.IsVisible(60)">SetFocus(9000)</onright>
+                <onleft>SetFocus(9000)</onleft>
                 <visible>$PARAM[visible]</visible>
                 <viewtype label="$PARAM[viewtype]">icon</viewtype>
                 <itemlayout width="$PARAM[width]" height="$PARAM[height]">
