@@ -110,7 +110,7 @@
         <control type="group">
             <left>-140</left>
             <top>-40</top>
-            <width>900</width>
+            <width>920</width>
             <height>1080</height>
             <control type="group">
                 <width>800</width>
@@ -286,7 +286,7 @@
         <control type="grouplist">
             <top>0</top>
             <left>0</left>
-            <width>840</width>
+            <width>1980</width>
             <align>left</align>
             <orientation>horizontal</orientation>
             <visible>ListItem($PARAM[item]).IsCollection</visible>
@@ -329,14 +329,14 @@
         <definition>
             <control type="group">
                 <width>89</width>
-                <visible>!String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.$PARAM[label].Art.Poster))</visible>
+                <visible>!String.IsEmpty(Window(Home).Property(SkinInfo.Set.Movie.$PARAM[label].Art(poster)))</visible>
                 <control type="image">
                     <left>3</left>
                     <top>10</top>
                     <width>79</width>
                     <height>104</height>
                     <aspectratio>stretch</aspectratio>
-                    <texture diffuse="boxes/clearcases/wall_mask.png" fallback="common/blank.png" background="true">$INFO[Window(Home).Property(SkinHelper.ListItem.$PARAM[label].Art.Poster)]</texture>
+                    <texture diffuse="boxes/clearcases/wall_mask.png" fallback="common/blank.png" background="true">$INFO[Window(Home).Property(SkinInfo.Set.Movie.$PARAM[label].Art(poster))]</texture>
                 </control>
                 <control type="image">
                     <left>0</left>
@@ -344,7 +344,7 @@
                     <width>89</width>
                     <height>120</height>
                     <aspectratio>stretch</aspectratio>
-                    <texture background="true">boxes/clearcases/$INFO[Window(Home).Property(SkinHelper.ListItem.$PARAM[label].Resolution)]p.png</texture>
+                    <texture background="true">boxes/clearcases/$INFO[Window(Home).Property(SkinInfo.Set.Movie.$PARAM[label].VideoResolution)]p.png</texture>
                 </control>
             </control>
         </definition>
@@ -436,7 +436,7 @@
 
     <variable name="Label_ShowCase_InfoLine">
         <value condition="Window.IsVisible(script-script.extendedinfo-VideoList.xml)">$INFO[ListItem.MPAA,[COLOR=main_fg_100],[/COLOR]  |  ]$VAR[Label_Premiered,[COLOR=main_fg_100],[/COLOR]]</value>
-        <value condition="ListItem.IsCollection">$INFO[Window(Home).Property(SkinHelper.ListItem.Year),[COLOR=main_fg_100],[/COLOR]  |  ]$VAR[Label_Duration,[COLOR=main_fg_100],[/COLOR]  |  ]$VAR[Label_Sets_Count,[COLOR=main_fg_100],[/COLOR]]</value>
+        <value condition="ListItem.IsCollection">[COLOR=main_fg_100]Total Movies $INFO[Window(Home).Property(SkinInfo.Set.Movies.Count)][/COLOR]</value>
         <value condition="[Container.Content(seasons) | Container.Content(tvshows)] + [!String.IsEmpty(ListItem.MPAA) | !String.IsEmpty(ListItem.Duration) | !String.IsEmpty(ListItem.Premiered)] + !String.IsEmpty(ListItem.Property(TotalEpisodes))">$INFO[ListItem.MPAA,[COLOR=main_fg_100],[/COLOR]  |  ]$VAR[Label_Premiered,[COLOR=main_fg_100],[/COLOR]  |  ]$VAR[Label_Duration,[COLOR=main_fg_100],[/COLOR]  |  ]$INFO[ListItem.Property(WatchedEpisodes),[COLOR=main_fg_100]$LOCALIZE[16102] , $LOCALIZE[20163] [/COLOR]]$INFO[ListItem.Property(TotalEpisodes),[COLOR=main_fg_100],[/COLOR]]</value>
         <value condition="!String.IsEmpty(ListItem.MPAA) | !String.IsEmpty(ListItem.Duration) | !String.IsEmpty(ListItem.Premiered)">$INFO[ListItem.MPAA,[COLOR=main_fg_100],[/COLOR]  |  ]$VAR[Label_Premiered,[COLOR=main_fg_100],[/COLOR]  |  ]$VAR[Label_Duration,[COLOR=main_fg_100],[/COLOR]  |  ]$VAR[Label_EndTime,[COLOR=main_fg_100]$LOCALIZE[31106] ,[/COLOR]]</value>
         <value condition="[String.StartsWith(Container.FolderPath,plugin://plugin.program.advanced.launcher/) | String.StartsWith(Container.FolderPath,plugin://plugin.program.advanced.emulator.launcher/) | String.StartsWith(Container.FolderPath,plugin://plugin.program.advanced.MAME.launcher/)]">$INFO[ListItem.Property(platform),[COLOR=main_fg_100],[/COLOR]]$INFO[ListItem.Studio,  |  [COLOR=main_fg_100],[/COLOR]]$INFO[ListItem.Year,  |  [COLOR=main_fg_100],[/COLOR]]$INFO[ListItem.Property(nplayers),  |  [COLOR=main_fg_100], $LOCALIZE[31308][/COLOR]]$INFO[ListItem.Property(ESRB),  |  [COLOR=main_fg_100],[/COLOR]]</value>
@@ -445,9 +445,9 @@
     </variable>
 
     <variable name="Label_Genre">
-        <value condition="ListItem.IsCollection">$INFO[Window(Home).Property(SkinHelper.ListItem.Genre)]</value>
+        <value condition="ListItem.IsCollection">$INFO[Window(Home).Property(SkinInfo.Set.Movies.Genre)]</value>
         <value condition="!String.IsEmpty(ListItem.Genre)">$INFO[ListItem.Genre]</value>
-        <value condition="!String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.Genre))">$INFO[Window(Home).Property(SkinHelper.ListItem.Genre)]</value>
+        <value condition="!String.IsEmpty(Window(Home).Property(SkinInfo.Set.Movies.Genre))">$INFO[Window(Home).Property(SkinInfo.Set.Movies.Genre)]</value>
         <value>Other</value>
     </variable>
 

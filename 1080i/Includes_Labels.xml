@@ -385,7 +385,6 @@
     </variable>
 
     <variable name="Label_Duration">
-        <value condition="ListItem.IsCollection">$INFO[Window(Home).Property(SkinHelper.ListItem.Duration.Hours),, $LOCALIZE[31036] ]$INFO[Window(Home).Property(SkinHelper.ListItem.Duration.Minutes),, $LOCALIZE[31020]]</value>
         <value condition="!String.IsEmpty(ListItem.Duration) + Integer.IsGreater(ListItem.Duration(h),0)">$INFO[ListItem.Duration(h),, $LOCALIZE[31036] ]$INFO[ListItem.Duration(mm),, $LOCALIZE[31020]]</value>
         <value condition="!String.IsEmpty(ListItem.Duration)">$INFO[ListItem.Duration(mins),, $LOCALIZE[31020]]</value>
     </variable>
@@ -429,10 +428,6 @@
     <variable name="Label_SetName">
         <value condition="!String.IsEmpty(Window.Property(Set))">$INFO[Window.Property(Set)]</value>
         <value condition="!String.IsEmpty(Window.Property(Title))">$INFO[Window.Property(Title)]</value>
-    </variable>
-
-    <variable name="Label_Sets_Count">
-        <value>$INFO[Window(Home).Property(SkinHelper.ListItem.WatchedCount),, $LOCALIZE[20163] ]$INFO[Window(Home).Property(SkinHelper.ListItem.Count),, [LOWERCASE]$LOCALIZE[16102][/LOWERCASE]]</value>
     </variable>
 
     <variable name="Label_OverlayTitle">

@@ -5,6 +5,7 @@
     <onload condition="!String.IsEmpty(Skin.String(StartupPlaylist))">ReplaceWindow(1113)</onload>
     <onload condition="String.IsEmpty(Skin.String(StartupPlaylist)) + Skin.HasSetting(EnableTMDBHelperSplash)">SetFocus(9001)</onload>
     <onload condition="String.IsEmpty(Skin.String(StartupPlaylist)) + !Skin.HasSetting(EnableTMDBHelperSplash)">ReplaceWindow($INFO[System.StartupWindow])</onload>
+    <onload condition="System.HasAddon(script.magic.info.service)">RunScript(script.magic.info.service)</onload>
     <controls>
         <include>Home_Splash</include>
         <control type="button" id="9001">

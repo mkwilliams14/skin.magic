@@ -125,13 +125,13 @@
 
 
     <variable name="Label_Plot" containers="530,580,590,3001,5610">
+        <value condition="!String.IsEmpty(Window(Home).Property(SkinInfo.Set.Movies.Plot))">$INFO[Window(Home).Property(SkinInfo.Set.Movies.Plot)]</value>
         <value condition="Window.IsVisible(1140) + Control.HasFocus(5000)">$INFO[Container(5000).ListItem.Plot]</value>
         <value condition="!String.IsEmpty({listitem}.Property(Artist_Description))">$INFO[{listitem}.Property(Artist_Description)]</value>
         <value condition="!String.IsEmpty({listitem}.Property(Album_Description))">$INFO[{listitem}.Property(Album_Description)]</value>
         <value condition="!String.IsEmpty({listitem}.AddonDescription)">$INFO[{listitem}.AddonDescription]</value>
         <value condition="!String.IsEmpty({listitem}.PlotOutline) + Skin.HasSetting(PlotOutline)">$INFO[{listitem}.PlotOutline]</value>
         <value condition="!String.IsEmpty({listitem}.Plot)">$INFO[{listitem}.Plot]</value>
-        <value condition="!String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Plot))">$INFO[Window(Home).Property(TMDbHelper.ListItem.Plot)]</value>
     </variable>
 
     <expression name="Exp_DefaultIcon" containers="501,502,504,56" start="-15" end="17">[String.IsEmpty({listitem}.Art(poster)) + String.IsEmpty({listitem}.Art(tvshow.poster)) + String.IsEmpty({listitem}.Art(fanart)) + String.IsEmpty({listitem}.Art(tvshow.fanart)) + String.IsEmpty({listitem}.Art(clearlogo))  + String.IsEmpty({listitem}.Art(landscape)) + [String.IsEqual({listitem}.Icon,{listitem}.ActualIcon) | [Window.IsVisible(AddonBrowser.xml) + String.IsEmpty({listitem}.AddonName)] | [Window.IsMedia + String.IsEmpty(Container.FolderPath)]]]</expression>
