@@ -1673,3 +1673,11 @@ msgstr ""
 msgctxt "#31433"
 msgid "Switch palette"
 msgstr ""
+
+msgctxt "#31434"
+msgid "Studio Icons"
+msgstr ""
+
+msgctxt "#31435"
+msgid "Weather Icons"
+msgstr ""

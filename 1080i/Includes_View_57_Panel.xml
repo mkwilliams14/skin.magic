@@ -271,7 +271,7 @@
                     <visible>$PARAM[genre]</visible>
                 </control>
                 <control type="textbox">
-                    <label fallback="19055">$VAR[Label_Plot]</label>
+                    <label fallback="19055">$INFO[Window(Home).Property(SkinInfo.Set.Movies.Plot)]</label>
                     <height>$PARAM[plot_height]</height>
                     <aligny>top</aligny>
                     <textcolor>main_fg_70</textcolor>
@@ -436,7 +436,7 @@
 
     <variable name="Label_ShowCase_InfoLine">
         <value condition="Window.IsVisible(script-script.extendedinfo-VideoList.xml)">$INFO[ListItem.MPAA,[COLOR=main_fg_100],[/COLOR]  |  ]$VAR[Label_Premiered,[COLOR=main_fg_100],[/COLOR]]</value>
-        <value condition="ListItem.IsCollection">[COLOR=main_fg_100]Total Movies $INFO[Window(Home).Property(SkinInfo.Set.Movies.Count)][/COLOR]</value>
+        <value condition="ListItem.IsCollection">$INFO[Window(Home).Property(SkinHelper.ListItem.Year),[COLOR=main_fg_100],[/COLOR]  |  ]$VAR[Label_Duration,[COLOR=main_fg_100],[/COLOR]  |  ]$VAR[Label_Sets_Count,[COLOR=main_fg_100],[/COLOR]]</value>
         <value condition="[Container.Content(seasons) | Container.Content(tvshows)] + [!String.IsEmpty(ListItem.MPAA) | !String.IsEmpty(ListItem.Duration) | !String.IsEmpty(ListItem.Premiered)] + !String.IsEmpty(ListItem.Property(TotalEpisodes))">$INFO[ListItem.MPAA,[COLOR=main_fg_100],[/COLOR]  |  ]$VAR[Label_Premiered,[COLOR=main_fg_100],[/COLOR]  |  ]$VAR[Label_Duration,[COLOR=main_fg_100],[/COLOR]  |  ]$INFO[ListItem.Property(WatchedEpisodes),[COLOR=main_fg_100]$LOCALIZE[16102] , $LOCALIZE[20163] [/COLOR]]$INFO[ListItem.Property(TotalEpisodes),[COLOR=main_fg_100],[/COLOR]]</value>
         <value condition="!String.IsEmpty(ListItem.MPAA) | !String.IsEmpty(ListItem.Duration) | !String.IsEmpty(ListItem.Premiered)">$INFO[ListItem.MPAA,[COLOR=main_fg_100],[/COLOR]  |  ]$VAR[Label_Premiered,[COLOR=main_fg_100],[/COLOR]  |  ]$VAR[Label_Duration,[COLOR=main_fg_100],[/COLOR]  |  ]$VAR[Label_EndTime,[COLOR=main_fg_100]$LOCALIZE[31106] ,[/COLOR]]</value>
         <value condition="[String.StartsWith(Container.FolderPath,plugin://plugin.program.advanced.launcher/) | String.StartsWith(Container.FolderPath,plugin://plugin.program.advanced.emulator.launcher/) | String.StartsWith(Container.FolderPath,plugin://plugin.program.advanced.MAME.launcher/)]">$INFO[ListItem.Property(platform),[COLOR=main_fg_100],[/COLOR]]$INFO[ListItem.Studio,  |  [COLOR=main_fg_100],[/COLOR]]$INFO[ListItem.Year,  |  [COLOR=main_fg_100],[/COLOR]]$INFO[ListItem.Property(nplayers),  |  [COLOR=main_fg_100], $LOCALIZE[31308][/COLOR]]$INFO[ListItem.Property(ESRB),  |  [COLOR=main_fg_100],[/COLOR]]</value>
@@ -453,6 +453,10 @@
 
     <variable name="Label_EndTime">
         <value condition="!String.IsEmpty(ListItem.EndTime) + !String.IsEqual(ListItem.EndTime,System.Time)">$INFO[ListItem.EndTime]</value>
+    </variable>
+
+    <variable name="Label_Sets_Count">
+        <value>$INFO[Window(Home).Property(SkinHelper.ListItem.WatchedCount),, $LOCALIZE[20163] ]$INFO[Window(Home).Property(SkinHelper.ListItem.Count),, [LOWERCASE]$LOCALIZE[16102][/LOWERCASE]]</value>
     </variable>
 
     <variable name="Image_Cases">

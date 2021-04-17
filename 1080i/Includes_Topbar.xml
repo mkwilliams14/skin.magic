@@ -140,12 +140,12 @@
                 <aligny>top</aligny>
                 <usecontrolcoords>true</usecontrolcoords>
                 <control type="group">
-                    <width>64</width>
+                    <width>50</width>
                     <control type="image">
                         <aligny>center</aligny>
-                        <height>64</height>
+                        <height>50</height>
                         <aspectratio>keep</aspectratio>
-                        <texture colordiffuse="$PARAM[fgcolor]_100">$INFO[Weather.FanartCode,resource://resource.images.weathericons.white/,.png]</texture>
+                        <texture>$INFO[Window(weather).Property(Current.ConditionIcon)]</texture>
                     </control>
                     <visible>Weather.IsFetched</visible>
                 </control>

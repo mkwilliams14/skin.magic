@@ -21,18 +21,6 @@
                                 <include>skinshortcuts-template-widgets</include>
                             </control>
                             <control type="group">
-                                <visible>String.IsEqual(Container(3700).ListItemAbsolute(0).Property(list),Weather) + Weather.IsFetched</visible>
-                                <include content="Animation_UpDown">
-                                    <param name="visible" value="String.IsEqual(Container(3700).ListItemAbsolute(0).Property(list),Weather) + Weather.IsFetched" />
-                                </include>
-                                <include content="Weather">
-                                    <left>100</left>
-                                    <right>100</right>
-                                    <top>20</top>
-                                    <bottom>20</bottom>
-                                </include>
-                            </control>
-                            <control type="group">
                                 <visible>Integer.IsEqual(Container(3700).NumItems,0)</visible>
                                 <left>20</left>
                                 <right>20</right>

@@ -346,7 +346,21 @@
                         <include>Dialog_Standard_HintLabel</include>
                         <label>$LOCALIZE[31030]</label>
                     </control>
-                    <control type="radiobutton" id="19305" description="Color Mode">
+                    <control type="button" id="19305" description="Studio Icons">
+                        <visible>Integer.IsEqual(Window.Property(CurrentFocus),9003)</visible>
+                        <include>Defs_Settings_Button</include>
+                        <label>$LOCALIZE[31434]</label>
+                        <label2>$INFO[Skin.String(SkinHelper.StudioLogos.Name)]</label2>
+                        <onclick>RunScript(script.skin.helper.service,action=setresourceaddon,skinstring=SkinHelper.StudioLogos,addontype=resource.images.studios)</onclick>
+                    </control>
+                    <control type="button" id="19306" description="Weather Icons">
+                        <visible>Integer.IsEqual(Window.Property(CurrentFocus),9003)</visible>
+                        <include>Defs_Settings_Button</include>
+                        <label>$LOCALIZE[31435]</label>
+                        <label2>$INFO[Skin.String(weather.icons.name)]</label2>
+                        <onclick>RunScript(script.image.resource.select,property=weather.icons&amp;type=resource.images.weathericons)</onclick>
+                    </control>
+                    <control type="radiobutton" id="19307" description="Color Mode">
                         <visible>Integer.IsEqual(Window.Property(CurrentFocus),9003)</visible>
                         <include>Defs_Settings_Button</include>
                         <label>$LOCALIZE[31041]</label>
@@ -355,21 +369,21 @@
                         <selected>!Skin.HasSetting(EnableMonochromeFlags)</selected>
                         <onclick>Skin.ToggleSetting(EnableMonochromeFlags)</onclick>
                     </control>
-                    <control type="radiobutton" id="19306" description="Ratings">
+                    <control type="radiobutton" id="19308" description="Ratings">
                         <visible>Integer.IsEqual(Window.Property(CurrentFocus),9003)</visible>
                         <include>Defs_Settings_Button</include>
                         <label>$LOCALIZE[31116]</label>
                         <onclick>ActivateWindow(1118)</onclick>
                         <selected>Skin.HasSetting(TMDbHelper.Service) + !Skin.HasSetting(DisableAllRatings)</selected>
                     </control>
-                    <control type="radiobutton" id="19310">
+                    <control type="radiobutton" id="19309">
                         <visible>Integer.IsEqual(Window.Property(CurrentFocus),9003)</visible>
                         <label>Clearlogo</label>
                         <include>Defs_Settings_Button</include>
                         <selected>Skin.HasSetting(EnableClearlogo)</selected>
                         <onclick>Skin.ToggleSetting(EnableClearlogo)</onclick>
                     </control>
-                    <control type="radiobutton" id="19307" description="Clock Weather">
+                    <control type="radiobutton" id="19310" description="Clock Weather">
                         <visible>Integer.IsEqual(Window.Property(CurrentFocus),9003)</visible>
                         <include>Defs_Settings_Button</include>
                         <label>$LOCALIZE[31044]</label>
@@ -379,14 +393,14 @@
                         <onclick>AlarmClock(ReFocus1,SetFocus(9007),00:00,silent)</onclick>
                         <onclick>AlarmClock(ReFocus2,SetFocus(19711),00:00,silent)</onclick>
                     </control>
-                    <control type="button" id="19308" description="Skin Logo">
+                    <control type="button" id="19311" description="Skin Logo">
                         <visible>Integer.IsEqual(Window.Property(CurrentFocus),9003)</visible>
                         <include>Defs_Settings_Button</include>
                         <label>$LOCALIZE[31026]</label>
                         <label2>$INFO[Skin.String(SkinLogo)]</label2>
                         <onclick>Skin.SetImage(SkinLogo,special://skin/extras/icons/)</onclick>
                     </control>
-                    <control type="radiobutton" id="19309" description="Trailer">
+                    <control type="radiobutton" id="19312" description="Trailer">
                         <visible>Integer.IsEqual(Window.Property(CurrentFocus),9003)</visible>
                         <include>Defs_Settings_Button</include>
                         <label>$LOCALIZE[31091]</label>
@@ -836,6 +850,15 @@
                     </control>
                     <control type="radiobutton" id="19907">
                         <visible>Integer.IsEqual(Window.Property(CurrentFocus),9009)</visible>
+                        <label>script.skin.helper.service</label>
+                        <label2>$INFO[System.AddonVersion(script.skin.helper.service)]        </label2>
+                        <onclick>Addon.OpenSettings(script.skin.helper.service)</onclick>
+                        <onclick condition="!System.HasAddon(script.skin.helper.service)">InstallAddon(script.skin.helper.service)</onclick>
+                        <selected>System.HasAddon(script.skin.helper.service)</selected>
+                        <include>Defs_Settings_Button</include>
+                    </control>
+                    <control type="radiobutton" id="19908">
+                        <visible>Integer.IsEqual(Window.Property(CurrentFocus),9009)</visible>
                         <label>script.artistslideshow</label>
                         <label2>$INFO[System.AddonVersion(script.artistslideshow)]        </label2>
                         <onclick>Addon.OpenSettings(script.artistslideshow)</onclick>
@@ -843,7 +866,7 @@
                         <selected>System.HasAddon(script.artistslideshow)</selected>
                         <include>Defs_Settings_Button</include>
                     </control>
-                    <control type="radiobutton" id="19908">
+                    <control type="radiobutton" id="19909">
                         <visible>Integer.IsEqual(Window.Property(CurrentFocus),9009)</visible>
                         <label>plugin.program.autocompletion</label>
                         <label2>$INFO[System.AddonVersion(plugin.program.autocompletion)]        </label2>
@@ -852,7 +875,7 @@
                         <selected>System.HasAddon(plugin.program.autocompletion)</selected>
                         <include>Defs_Settings_Button</include>
                     </control>
-                    <control type="radiobutton" id="19909">
+                    <control type="radiobutton" id="19910">
                         <visible>Integer.IsEqual(Window.Property(CurrentFocus),9009)</visible>
                         <label>resource.images.studios.white</label>
                         <label2>$INFO[System.AddonVersion(resource.images.studios.white)]        </label2>
@@ -861,7 +884,16 @@
                         <selected>System.HasAddon(resource.images.studios.white)</selected>
                         <include>Defs_Settings_Button</include>
                     </control>
-                    <control type="radiobutton" id="19910">
+                    <control type="radiobutton" id="19911">
+                        <visible>Integer.IsEqual(Window.Property(CurrentFocus),9009)</visible>
+                        <label>resource.images.studios.coloured</label>
+                        <label2>$INFO[System.AddonVersion(resource.images.studios.coloured)]        </label2>
+                        <onclick>Addon.OpenSettings(resource.images.studios.coloured)</onclick>
+                        <onclick condition="!System.HasAddon(resource.images.studios.coloured)">InstallAddon(resource.images.studios.coloured)</onclick>
+                        <selected>System.HasAddon(resource.images.studios.coloured)</selected>
+                        <include>Defs_Settings_Button</include>
+                    </control>
+                    <control type="radiobutton" id="19912">
                         <visible>Integer.IsEqual(Window.Property(CurrentFocus),9009)</visible>
                         <label>resource.images.moviecountryicons.maps</label>
                         <label2>$INFO[System.AddonVersion(resource.images.moviecountryicons.maps)]        </label2>
@@ -870,7 +902,7 @@
                         <selected>System.HasAddon(resource.images.moviecountryicons.maps)</selected>
                         <include>Defs_Settings_Button</include>
                     </control>
-                    <control type="radiobutton" id="19911">
+                    <control type="radiobutton" id="19913">
                         <visible>Integer.IsEqual(Window.Property(CurrentFocus),9009)</visible>
                         <label>resource.images.moviegenreicons.transparent</label>
                         <label2>$INFO[System.AddonVersion(resource.images.moviegenreicons.transparent)]        </label2>
@@ -879,7 +911,7 @@
                         <selected>System.HasAddon(resource.images.moviegenreicons.transparent)</selected>
                         <include>Defs_Settings_Button</include>
                     </control>
-                    <control type="radiobutton" id="19912">
+                    <control type="radiobutton" id="19914">
                         <visible>Integer.IsEqual(Window.Property(CurrentFocus),9009)</visible>
                         <label>resource.images.weatherfanart.multi</label>
                         <label2>$INFO[System.AddonVersion(resource.images.weatherfanart.multi)]        </label2>
@@ -888,7 +920,7 @@
                         <selected>System.HasAddon(resource.images.weatherfanart.multi)</selected>
                         <include>Defs_Settings_Button</include>
                     </control>
-                    <control type="radiobutton" id="19913">
+                    <control type="radiobutton" id="19915">
                         <visible>Integer.IsEqual(Window.Property(CurrentFocus),9009)</visible>
                         <label>resource.images.weathericons.outline-hd</label>
                         <label2>$INFO[System.AddonVersion(resource.images.weathericons.outline-hd)]        </label2>
@@ -897,34 +929,7 @@
                         <selected>System.HasAddon(resource.images.weathericons.outline-hd)</selected>
                         <include>Defs_Settings_Button</include>
                     </control>
-                    <control type="radiobutton" id="19914">
-                        <visible>Integer.IsEqual(Window.Property(CurrentFocus),9009)</visible>
-                        <label>resource.images.weathericons.white</label>
-                        <label2>$INFO[System.AddonVersion(resource.images.weathericons.white)]        </label2>
-                        <onclick>Addon.OpenSettings(resource.images.weathericons.white)</onclick>
-                        <onclick condition="!System.HasAddon(resource.images.weathericons.white)">InstallAddon(resource.images.weathericons.white)</onclick>
-                        <selected>System.HasAddon(resource.images.weathericons.white)</selected>
-                        <include>Defs_Settings_Button</include>
-                    </control>
-                    <control type="radiobutton" id="19915">
-                        <visible>Integer.IsEqual(Window.Property(CurrentFocus),9009)</visible>
-                        <label>script.artwork.beef</label>
-                        <label2>$INFO[System.AddonVersion(script.artwork.beef)]        </label2>
-                        <onclick>Addon.OpenSettings(script.artwork.beef)</onclick>
-                        <onclick condition="!System.HasAddon(script.artwork.beef)">InstallAddon(script.artwork.beef)</onclick>
-                        <selected>System.HasAddon(script.artwork.beef)</selected>
-                        <include>Defs_Settings_Button</include>
-                    </control>
                     <control type="radiobutton" id="19916">
-                        <visible>Integer.IsEqual(Window.Property(CurrentFocus),9009)</visible>
-                        <label>script.artwork.helper</label>
-                        <label2>$INFO[System.AddonVersion(script.artwork.helper)]        </label2>
-                        <onclick>Addon.OpenSettings(script.artwork.helper)</onclick>
-                        <onclick condition="!System.HasAddon(script.artwork.helper)">InstallAddon(script.artwork.helper)</onclick>
-                        <selected>System.HasAddon(script.artwork.helper)</selected>
-                        <include>Defs_Settings_Button</include>
-                    </control>
-                    <control type="radiobutton" id="19917">
                         <visible>Integer.IsEqual(Window.Property(CurrentFocus),9009)</visible>
                         <label>script.image.resource.select</label>
                         <label2>$INFO[System.AddonVersion(script.image.resource.select)]        </label2>
@@ -933,13 +938,22 @@
                         <selected>System.HasAddon(script.image.resource.select)</selected>
                         <include>Defs_Settings_Button</include>
                     </control>
-                    <control type="radiobutton" id="19918">
+                    <control type="radiobutton" id="19917">
                         <visible>Integer.IsEqual(Window.Property(CurrentFocus),9009)</visible>
                         <label>script.skin.helper.colorpicker</label>
                         <label2>$INFO[System.AddonVersion(script.skin.helper.colorpicker)]        </label2>
                         <onclick>Addon.OpenSettings(script.skin.helper.colorpicker)</onclick>
                         <onclick condition="!System.HasAddon(script.skin.helper.colorpicker)">InstallAddon(script.skin.helper.colorpicker)</onclick>
                         <selected>System.HasAddon(script.skin.helper.colorpicker)</selected>
+                        <include>Defs_Settings_Button</include>
+                    </control>
+                    <control type="radiobutton" id="19918">
+                        <visible>Integer.IsEqual(Window.Property(CurrentFocus),9009)</visible>
+                        <label>service.tvtunes</label>
+                        <label2>$INFO[System.AddonVersion(service.tvtunes)]        </label2>
+                        <onclick>Addon.OpenSettings(service.tvtunes)</onclick>
+                        <onclick condition="!System.HasAddon(service.tvtunes)">InstallAddon(service.tvtunes)</onclick>
+                        <selected>System.HasAddon(service.tvtunes)</selected>
                         <include>Defs_Settings_Button</include>
                     </control>
 

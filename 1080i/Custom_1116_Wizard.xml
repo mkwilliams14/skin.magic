@@ -42,27 +42,40 @@
                         <onright>61</onright>
                         <description>Control Area</description>
                         <itemgap>0</itemgap>
+                        <height>400</height>
                         <pagecontrol>61</pagecontrol>
                         <orientation>vertical</orientation>
                         <usecontrolcoords>true</usecontrolcoords>
-                        <control type="radiobutton" id="9001">
+                        <control type="button" id="9001">
+                            <include>Defs_Settings_Button</include>
+                            <label>$LOCALIZE[31434]</label>
+                            <label2>$INFO[Skin.String(SkinHelper.StudioLogos.Name)]</label2>
+                            <onclick>RunScript(script.skin.helper.service,action=setresourceaddon,skinstring=SkinHelper.StudioLogos,addontype=resource.images.studios)</onclick>
+                        </control>
+                        <control type="button" id="9002">
+                            <include>Defs_Settings_Button</include>
+                            <label>$LOCALIZE[31435]</label>
+                            <label2>$INFO[Skin.String(weather.icons.name)]</label2>
+                            <onclick>RunScript(script.image.resource.select,property=weather.icons&amp;type=resource.images.weathericons)</onclick>
+                        </control>
+                        <control type="radiobutton" id="9003">
                             <radioposx>740</radioposx>
-                            <include>Dialog_Standard_Button</include>
+                            <include>Defs_Settings_Button</include>
                             <label>$LOCALIZE[31162]</label>
                             <onclick>Skin.Reset(DisableAllRatings)</onclick>
                             <onclick>Skin.ToggleSetting(TMDbHelper.Service)</onclick>
                             <selected>Skin.HasSetting(TMDbHelper.Service)</selected>
                         </control>
-                        <control type="radiobutton" id="9002">
+                        <control type="radiobutton" id="9004">
                             <radioposx>740</radioposx>
-                            <include>Dialog_Standard_Button</include>
+                            <include>Defs_Settings_Button</include>
                             <label>$LOCALIZE[31095]</label>
                             <onclick>Skin.ToggleSetting(EnableExtendedInfo)</onclick>
                             <selected>Skin.HasSetting(EnableExtendedInfo)</selected>
                         </control>
-                        <control type="radiobutton" id="9003">
+                        <control type="radiobutton" id="9005">
                             <radioposx>740</radioposx>
-                            <include>Dialog_Standard_Button</include>
+                            <include>Defs_Settings_Button</include>
                             <include>Defs_RadioButton_NoTexture</include>
                             <label>$LOCALIZE[31063]</label>
                             <label2>$VAR[Label_Setting_BackgroundStyle]</label2>
@@ -70,9 +83,9 @@
                             <onclick condition="Skin.HasSetting(DisableBlur)">Skin.ToggleSetting(DisableOverlay)</onclick>
                             <onclick condition="Skin.HasSetting(DisableOverlay)">Skin.Reset(DisableBlur)</onclick>
                         </control>
-                        <control type="radiobutton" id="9004">
+                        <control type="radiobutton" id="9006">
                             <radioposx>740</radioposx>
-                            <include>Dialog_Standard_Button</include>
+                            <include>Defs_Settings_Button</include>
                             <include>Defs_RadioButton_NoTexture</include>
                             <label>$LOCALIZE[31239]</label>
                             <label2>$VAR[Label_BusyWaves]</label2>
@@ -80,9 +93,9 @@
                             <onclick condition="!System.HasAddon(resource.images.arctic.waves)">Skin.Reset(DisableBusyBackground)</onclick>
                             <onclick condition="!System.HasAddon(resource.images.arctic.waves)">InstallAddon(resource.images.arctic.waves)</onclick>
                         </control>
-                        <control type="radiobutton" id="9005">
+                        <control type="radiobutton" id="9007">
                             <radioposx>740</radioposx>
-                            <include>Dialog_Standard_Button</include>
+                            <include>Defs_Settings_Button</include>
                             <include>Defs_RadioButton_NoTexture</include>
                             <label>$LOCALIZE[31240]</label>
                             <label2>$VAR[Label_ColourScheme]</label2>
@@ -100,6 +113,10 @@
 
             <include content="Dialog_Scrollbar">
                 <param name="onleft" value="9000" />
+            </include>
+
+            <include content="Dialog_Wizard_Arrows">
+                <param name="id" value="9000" />
             </include>
 
 
