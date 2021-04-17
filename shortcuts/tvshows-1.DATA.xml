@@ -15,11 +15,32 @@
         <action>ActivateWindow(Videos,special://skin/extras/playlists/NewEpisodes.xsp,return)</action>
     </shortcut>
     <shortcut>
-        <label>$LOCALIZE[590]</label>
+        <label>Shows You May Like</label>
         <label2 />
         <icon />
         <thumb />
         <action>ActivateWindow(Videos,special://skin/extras/playlists/RandomTvShows.xsp,return)</action>
+    </shortcut>
+    <shortcut>
+        <label>Because you watched $INFO[Container(30204).ListItem.Property(searchstring)]</label>
+        <label2 />
+        <icon />
+        <thumb />
+        <action>ActivateWindow(Videos,"plugin://script.magic.skin.helper/?info=getsimilar&amp;type=tvshow",return)</action>
+    </shortcut>
+    <shortcut>
+        <label>Next Up TV Shows</label>
+        <label2 />
+        <icon />
+        <thumb />
+        <action>ActivateWindow(Videos,"plugin://script.magic.skin.helper/?info=getnextup&amp;type=tvshow",return)</action>
+    </shortcut>
+    <shortcut>
+        <label>Suggestions by Genre $INFO[Container(30106).ListItem.Property(searchstring),',']</label>
+        <label2 />
+        <icon />
+        <thumb />
+        <action>ActivateWindow(Videos,"plugin://script.magic.skin.helper/?info=getbygenre&amp;type=tvshow",return)</action>
     </shortcut>
     
 </shortcuts>
