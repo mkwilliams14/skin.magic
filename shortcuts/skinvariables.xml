@@ -120,6 +120,7 @@
         <value condition="!String.IsEmpty({listitem}.Art(tvshow.poster)) + [String.IsEqual({listitem}.Property(Container.Info),library_nextaired) | String.IsEqual({listitem}.Property(Container.Info),trakt_calendar)]">$INFO[{listitem}.Art(tvshow.poster)]</value>
         <value condition="!String.IsEmpty({listitem}.Art(poster))">$INFO[{listitem}.Art(poster)]</value>
         <value condition="!String.IsEmpty({listitem}.Art(tvshow.poster))">$INFO[{listitem}.Art(tvshow.poster)]</value>
+        <value condition="String.IsEmpty({listitem}.Icon)">$INFO[{listitem}.Art(tvshow.landscape)]</value>
         <value>$INFO[{listitem}.Icon]</value>
     </variable>
 
